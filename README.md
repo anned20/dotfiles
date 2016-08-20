@@ -7,7 +7,7 @@ Just my dotfiles, nothing more, nothing less.
 So simple! You just clone this repository and run `./install.sh`
 
 #License
-/*
+
  * ----------------------------------------------------------------------------
  * "THE BEER-WARE LICENSE" (Revision 42):
  * <annedouwebouma@gmail.com> wrote this file. As long as you retain this notice you
@@ -15,4 +15,4 @@ So simple! You just clone this repository and run `./install.sh`
  * this stuff is worth it, you can buy me a beer in return.
  * Anne Douwe Bouma
  * ----------------------------------------------------------------------------
- */
+ 
