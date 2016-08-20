@@ -89,6 +89,7 @@ set hidden
 
 " Rendering
 set ttyfast
+set lazyredraw
 
 " Status bar
 set laststatus=2
@@ -153,6 +154,7 @@ au InsertEnter * set nonumber
 au InsertLeave * set number
 set cursorline
 set noswapfile
+let g:gitgutter_sign_column_always = 1
 
 " Syntastic shizzle
 set statusline+=%#warningmsg#
@@ -177,4 +179,9 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth=40
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+if executable('ag')
+	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendors/*,*/tmp/*
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
