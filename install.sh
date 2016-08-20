@@ -1,4 +1,12 @@
-echo "Linking dotfiles"
+red=`tput setaf 1`
+green=`tput setaf 2`
+yellow=`tput setaf 3`
+reset=`tput sgr0`
+
+echo "${red}It is recommended to answer yes or y to all questions for everything to work properly!"
+read -p "${yellow}Press any key to continue..."
+
+echo "${yellow}Linking dotfiles${green}"
 
 dotfiles="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -16,19 +24,35 @@ for location in $dotfiles/home/*; do
 	link "$location" "$HOME/.$file"
 done
 
-echo "Doing vim stuff"
+echo "${yellow}Doing vim stuff${green}"
 
 link "$dotfiles/vim/vimrc" "$HOME/.vimrc"
 link "$dotfiles/vim/" "$HOME/.vim"
 
 git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 
-echo "Doing tmuxifier stuff"
+echo "${yellow}Installing vim plugins${green}"
+
+vim +PluginInstall +qall
+
+echo "${yellow}Installing YouCompleteMe${green}"
+
+cd $dotfiles/vim/bundle/YouCompleteMe
+./install.py
+
+echo "${yellow}Doing tmuxifier stuff${green}"
 
 git clone https://github.com/jimeh/tmuxifier.git $HOME/.tmuxifier
 link "$dotfiles/tmuxlayouts/" "$HOME/.tmuxlayouts"
 
-echo "Doing colorscheme stuff"
+echo "${yellow}Doing colorscheme stuff${green}"
 
 git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
 
+read -r -p "${yellow}Install the silver searcher (ag)?${red} [y/N] ${green}" response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+	sudo apt-get install silversearcher-ag
+fi
+
+echo "${yellow}Done!${reset}"
