@@ -1,0 +1,180 @@
+" don't try to be vi compatible
+set nocompatible
+
+" Helps force plugins to load correctly when it is turned back on below
+filetype off
+
+" Load plugins here (pathogen or vundle)
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'chriskempson/base16-vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'mattn/emmet-vim'
+Plugin 'othree/html5.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ervandew/supertab'
+Plugin 'scrooloose/syntastic'
+Plugin 'majutsushi/tagbar'
+Plugin 'SirVer/ultisnips'
+Plugin 'joonty/vdebug'
+Plugin 'vim-airline/vim-airline'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'pangloss/vim-javascript'
+Plugin 'groenewege/vim-less'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'honza/vim-snippets'
+Plugin 'evidens/vim-twig'
+Plugin 'Valloric/YouCompleteMe'
+
+call vundle#end()            " required
+
+" Turn on syntax highlighting
+syntax on
+
+" For plugins to load correctly
+filetype plugin indent on
+filetype plugin on
+
+" Pick a leader key
+let mapleader = "\<space>"
+
+" Remap jj to the Esc key
+imap jj <Esc>
+
+" Security
+set modelines=0
+
+" Show line numbers
+set number
+set relativenumber
+
+" Show file stats
+set ruler
+
+" Blink cursor on error instead of beeping (grr)
+set visualbell
+
+" Encoding
+set encoding=utf-8
+
+" Whitespace
+set nowrap
+set textwidth=79
+set formatoptions=tcqrn1
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set noexpandtab
+set noshiftround
+set autoindent
+set smarttab
+
+" Cursor motion
+set scrolloff=3
+set backspace=indent,eol,start
+set matchpairs+=<:> " use % to jump between pairs
+runtime! macros/matchit.vim
+
+" Move up/down editor lines
+nnoremap j gj
+nnoremap k gk
+
+" Allow hidden buffers
+set hidden
+
+" Rendering
+set ttyfast
+
+" Status bar
+set laststatus=2
+
+" Last line
+set showmode
+set showcmd
+
+" Searching
+nnoremap / /\v
+vnoremap / /\v
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+map <leader>c :let @/=''<cr> " clear search
+
+" Remap help key.
+inoremap <F1> <ESC>:set invfullscreen<CR>a
+nnoremap <F1> :set invfullscreen<CR>
+vnoremap <F1> :set invfullscreen<CR>
+
+" Tab shortcuts
+nnoremap <leader>p :tabprevious<CR>
+nnoremap <leader>n :tabnext<CR>
+nnoremap <leader>c :tabclose<CR>
+
+" Visualize tabs and newlines
+set listchars=tab:▸\ ,eol:¬
+" Uncomment this to enable by default:
+" set list " To enable by default
+" Or use your leader key + l to toggle on/off
+"map <leader>l :set list!<CR> " Toggle tabs and EOL
+
+" colors
+if filereadable(expand("~/.vimrc_background"))
+	let base16colorspace=256
+	source ~/.vimrc_background
+endif
+set term=screen-256color
+
+" Quickly save using leader+w
+nmap <leader>w :w<CR>
+
+" Quickly save and quit using leader+wq
+nmap <leader>wq :wq<CR>
+
+" Quit without saving using leader+qq
+nmap <leader>qq :q!<CR>
+
+" Random things
+nmap <leader>f :NERDTreeMirrorToggle<CR>
+nmap <leader>b :TagbarOpenAutoClose<CR>
+nmap <leader>j :%!python -m json.tool<CR>
+nmap <leader>v :tabedit ~/.vimrc<CR>
+nmap <leader>r :so $MYVIMRC<CR>
+nmap <leader><space> :let @/=""<CR>
+let NERDTreeQuitOnOpen=1
+set formatoptions-=t
+au InsertEnter * set nonumber
+au InsertLeave * set number
+set cursorline
+set noswapfile
+
+" Syntastic shizzle
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:SuperTabDefaultCompletionType    = '<C-n>'
+let g:SuperTabCrMapping                = 0
+
+let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+let g:ctrlp_by_filename = 1
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth=40
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']

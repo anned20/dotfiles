@@ -1,0 +1,34 @@
+NVM_DIR=~/.nvm
+source $NVM_DIR/nvm.sh
+tmux source-file ~/.tmux.conf
+source ~/.bash_aliases
+
+export ANDROID_HOME=/home/sibben/Android/Sdk
+export PATH=$PATH:/home/sibben/Android/Sdk/tools
+export PATH=$PATH:/home/sibben/IntelliJ_IDEA/idea/bin
+export PATH=$PATH:"$HOME/.tmuxifier/bin:$PATH"
+export TMUXIFIER_LAYOUT_PATH="$HOME/.tmuxlayouts"
+export EDITOR="vim"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+function color_my_prompt {
+    local __user_and_host="\[\033[01;32m\]\u@\h"
+    local __cur_location="\[\033[01;34m\]\w"
+    local __git_branch_color="\[\033[31m\]"
+    #local __git_branch="\`ruby -e \"print (%x{git branch 2> /dev/null}.grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1) ')\"\`"
+    local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
+    local __prompt_tail="\[\033[35m\]$"
+    local __last_color="\[\033[00m\]"
+    export PS1="$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
+}
+color_my_prompt
+
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+### 256 colors!
+TERM=xterm-256color
+
+eval "$(tmuxifier init -)"

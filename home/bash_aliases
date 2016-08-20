@@ -1,0 +1,44 @@
+alias ..='cd ..'
+alias ..2='cd ../../'
+alias ..3='cd ../../../'
+alias ..4='cd ../../../../'
+alias ..5='cd ../../../../../'
+alias ll='ls -l'
+alias la='ls -la'
+alias sib='tmuxifier load-session sibben'
+alias mm='tmuxifier load-window mox-members'
+alias oz='cd /var/www/onderdelenzoeker'
+alias sa='cd /var/www/sibbenapi'
+alias oudo='cd /var/www/oudo'
+alias rpi='ssh rpi'
+
+gitcommit() {
+    git commit -m "$*"
+}
+
+gitcommitall() {
+    git commit -a -m "$*"
+}
+
+gitpush() {
+    git push origin $*
+}
+
+gitcheckout() {
+    git checkout "$*"
+}
+
+gitpull() {
+    git pull $*
+}
+
+alias gc=gitcommit
+alias gca=gitcommitall
+alias gpush=gitpush
+alias gpull=gitpull
+alias gc=gitcheckout
+alias gs='git status'
+alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+alias gd="git diff"
+alias gb="git rev-parse --abbrev-ref HEAD"
+alias wgb="echo \$(git rev-parse --abbrev-ref HEAD) > current_branchename"
