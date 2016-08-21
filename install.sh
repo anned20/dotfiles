@@ -57,10 +57,7 @@ echo "${yellow}Doing colorscheme stuff${green}"
 
 git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
 
-read -r -p "${yellow}Install the silver searcher (ag)?${red} [y/N] ${green}" response
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
-then
-	sudo apt-get install silversearcher-ag
-fi
+echo "${yellow}Installing the Silver Searcher (ag)${green}"
+sudo apt-get install silversearcher-ag
 
 echo "${yellow}Done!${reset}"

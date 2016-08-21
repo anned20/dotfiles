@@ -57,7 +57,7 @@ set relativenumber
 set ruler
 
 " Blink cursor on error instead of beeping (grr)
-set visualbell
+set visualbell t_vb=
 
 " Encoding
 set encoding=utf-8
@@ -75,7 +75,7 @@ set autoindent
 set smarttab
 
 " Cursor motion
-set scrolloff=3
+set scrolloff=5
 set backspace=indent,eol,start
 set matchpairs+=<:> " use % to jump between pairs
 runtime! macros/matchit.vim
@@ -123,7 +123,7 @@ set listchars=tab:▸\ ,eol:¬
 " Uncomment this to enable by default:
 " set list " To enable by default
 " Or use your leader key + l to toggle on/off
-"map <leader>l :set list!<CR> " Toggle tabs and EOL
+map <leader>l :set list!<CR> " Toggle tabs and EOL
 
 " colors
 if filereadable(expand("~/.vimrc_background"))
@@ -141,7 +141,7 @@ nmap <leader>wq :wq<CR>
 " Quit without saving using leader+qq
 nmap <leader>qq :q!<CR>
 
-" Random things
+" Random things I can't think of a section for
 nmap <leader>f :NERDTreeMirrorToggle<CR>
 nmap <leader>b :TagbarOpenAutoClose<CR>
 nmap <leader>j :%!python -m json.tool<CR>
@@ -154,6 +154,7 @@ au InsertEnter * set nonumber
 au InsertLeave * set number
 set cursorline
 set noswapfile
+set nobackup
 let g:gitgutter_sign_column_always = 1
 
 " Syntastic shizzle
