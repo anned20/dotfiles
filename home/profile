@@ -1,0 +1,22 @@
+NVM_DIR=~/.nvm
+source $NVM_DIR/nvm.sh
+tmux source-file ~/.tmux.conf
+source ~/.bash_aliases
+
+export ANDROID_HOME=/home/sibben/Android/Sdk
+export PATH=$PATH:/home/sibben/Android/Sdk/tools
+export PATH=$PATH:/home/sibben/IntelliJ_IDEA/idea/bin
+export PATH=$PATH:"$HOME/.tmuxifier/bin:$PATH"
+export TMUXIFIER_LAYOUT_PATH="$HOME/.tmuxlayouts"
+export EDITOR="vim"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+### 256 colors!
+TERM=xterm-256color
+
+eval "$(tmuxifier init -)"
