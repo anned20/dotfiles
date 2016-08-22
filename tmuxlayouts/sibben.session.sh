@@ -12,7 +12,6 @@ if initialize_session "sibben"; then
   load_window "mox-admin"
   load_window "onderdelenzoeker"
   load_window "YouTube"
-  load_window "irc"
 
   # Select the default active window on session creation.
   select_window 0
