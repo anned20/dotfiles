@@ -90,6 +90,7 @@ set hidden
 " Rendering
 set ttyfast
 set lazyredraw
+set updatetime=350
 
 " Status bar
 set laststatus=2
@@ -178,10 +179,8 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 0
-let g:ctrlp_max_depth=40
-if executable('ag')
-	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
+let g:ctrlp_lazy_update=350
+let g:ctrlp_working_path_mode = 'ar'
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendors/*,*/tmp/*
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendors/*,*/tmp/*,*/web/js/*,*/web/css/*
