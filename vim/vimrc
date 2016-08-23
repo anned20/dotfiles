@@ -160,7 +160,6 @@ nmap <leader>wq :wq<CR>
 nmap <leader>qq :q!<CR>
 
 " Random leader things
->>>>>>> b670f802ccd02e4c4f5314c728977f70a781ecc8
 nmap <leader>f :NERDTreeMirrorToggle<CR>
 nmap <leader>p :CtrlPMixed<CR>
 nmap <leader>b :TagbarOpenAutoClose<CR>
