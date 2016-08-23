@@ -56,6 +56,8 @@ link "$dotfiles/tmuxlayouts/" "$HOME/.tmuxlayouts"
 echo "${yellow}Doing colorscheme stuff${green}"
 
 git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
+source $HOME/.bashrc
+base16_atelier-seaside
 
 read -r -p "${yellow}Install the silver searcher (ag)?${red} [y/N] ${green}" response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]

@@ -7,29 +7,30 @@ filetype off
 " Load plugins here (pathogen or vundle)
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'chriskempson/base16-vim'
-Plugin 'kien/ctrlp.vim'
 Plugin 'Raimondi/delimitMate'
-Plugin 'mattn/emmet-vim'
-Plugin 'othree/html5.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'ervandew/supertab'
-Plugin 'scrooloose/syntastic'
-Plugin 'majutsushi/tagbar'
 Plugin 'SirVer/ultisnips'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'chriskempson/base16-vim'
+Plugin 'ervandew/supertab'
+Plugin 'evidens/vim-twig'
+Plugin 'groenewege/vim-less'
+Plugin 'honza/vim-snippets'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'joonty/vdebug'
-Plugin 'vim-airline/vim-airline'
+Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'mattn/emmet-vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tomasr/molokai'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'pangloss/vim-javascript'
-Plugin 'groenewege/vim-less'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'honza/vim-snippets'
-Plugin 'evidens/vim-twig'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-airline/vim-airline'
 
 call vundle#end()            " required
 
@@ -56,8 +57,12 @@ set relativenumber
 " Show file stats
 set ruler
 
-" Blink cursor on error instead of beeping (grr)
-set visualbell
+" Persistent undo
+try
+	set undodir=~/.vim_undodir
+	set undofile
+catch
+endtry
 
 " Encoding
 set encoding=utf-8
@@ -127,10 +132,12 @@ set listchars=tab:▸\ ,eol:¬
 "map <leader>l :set list!<CR> " Toggle tabs and EOL
 
 " colors
-if filereadable(expand("~/.vimrc_background"))
-	let base16colorspace=256
-	source ~/.vimrc_background
-endif
+" if filereadable(expand("~/.vimrc_background"))
+" 	let base16colorspace=256
+" 	source ~/.vimrc_background
+" endif
+colorscheme molokai
+let g:rehash256 = 1
 set term=screen-256color
 
 " Quickly save using leader+w
