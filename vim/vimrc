@@ -157,6 +157,7 @@ nmap <leader>qq :q!<CR>
 
 " Random leader things
 nmap <leader>f :NERDTreeMirrorToggle<CR>
+nmap <leader>p :CtrlPMixed<CR>
 nmap <leader>b :TagbarOpenAutoClose<CR>
 nmap <leader>j :%!python -m json.tool<CR>
 nmap <leader>v :tabedit ~/.vimrc<CR>
