@@ -43,6 +43,12 @@ echo "${yellow}Installing vim plugins${green}"
 
 vim +PluginInstall +qall
 
+read -r -p "${yellow}Clean up vim plugins in .vim/bundle? ${red}[y/N] ${green}" response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+	vim +PluginClean +qall
+fi
+
 echo "${yellow}Installing YouCompleteMe${green}"
 
 cd $dotfiles/vim/bundle/YouCompleteMe
@@ -59,10 +65,7 @@ git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-
 source $HOME/.bashrc
 base16_atelier-seaside
 
-read -r -p "${yellow}Install the silver searcher (ag)?${red} [y/N] ${green}" response
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
-then
-	sudo apt-get install silversearcher-ag
-fi
+echo "${yellow}Installing the silver searcher (ag)${green}"
+sudo apt-get install silversearcher-ag
 
 echo "${yellow}Done!${reset}"
