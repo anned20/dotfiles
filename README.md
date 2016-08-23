@@ -1,3 +1,8 @@
+#Status
+You are viewing the stable branch. As of the current date: 23-08-2016 this
+repository is stable and ready for use.
+The most up to date version is the master branch.
+
 #.files
 
 Just my dotfiles, nothing more, nothing less.
