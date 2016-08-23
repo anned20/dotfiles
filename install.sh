@@ -54,6 +54,11 @@ echo "${yellow}Installing YouCompleteMe${green}"
 cd $dotfiles/vim/bundle/YouCompleteMe
 ./install.py
 
+echo "${yellow}Installing TPM (tmux plugin manager)${green}"
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+sudo apt-get install xclip
+
 echo "${yellow}Doing tmuxifier stuff${green}"
 
 git clone https://github.com/jimeh/tmuxifier.git $HOME/.tmuxifier
