@@ -171,6 +171,7 @@ set formatoptions-=t
 set noswapfile
 au InsertEnter * set nonumber
 au InsertLeave * set number
+set tags=tags;/
 
 " PDV
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"

@@ -39,6 +39,10 @@ link "$dotfiles/vim/" "$HOME/.vim"
 
 git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 
+echo "${yellow}Installing CTags${green}"
+
+sudo apt-get install exuberant-ctags
+
 echo "${yellow}Installing vim plugins${green}"
 
 vim +PluginInstall +qall
