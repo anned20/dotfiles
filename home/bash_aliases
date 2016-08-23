@@ -41,4 +41,6 @@ alias gs='git status'
 alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias gd="git diff"
 alias gb="git rev-parse --abbrev-ref HEAD"
-alias wgb="echo \$(git rev-parse --abbrev-ref HEAD) > current_branchename"
+alias wgb="echo \$(git rev-parse --abbrev-ref HEAD) > current_branchename; gb"
+
+alias tags=ctags -R --exclude=cache --exclude=web --exclude=git
