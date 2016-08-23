@@ -30,6 +30,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-expand-region'
+Plugin 'tobyS/vmustache'
+Plugin 'tobyS/pdv'
 Plugin 'tomasr/molokai'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
@@ -99,6 +101,7 @@ set hidden
 set ttyfast
 set lazyredraw
 set updatetime=350
+set cursorline
 
 " Status bar
 set laststatus=2
@@ -152,20 +155,25 @@ nmap <leader>wq :wq<CR>
 " Quit without saving using leader+qq
 nmap <leader>qq :q!<CR>
 
-" Random things
+" Random leader things
 nmap <leader>f :NERDTreeMirrorToggle<CR>
 nmap <leader>b :TagbarOpenAutoClose<CR>
 nmap <leader>j :%!python -m json.tool<CR>
 nmap <leader>v :tabedit ~/.vimrc<CR>
 nmap <leader>r :so $MYVIMRC<CR>
 nmap <leader><space> :let @/=""<CR>
+
+" Random things
 let NERDTreeQuitOnOpen=1
+let g:gitgutter_sign_column_always = 1
 set formatoptions-=t
+set noswapfile
 au InsertEnter * set nonumber
 au InsertLeave * set number
-set cursorline
-set noswapfile
-let g:gitgutter_sign_column_always = 1
+
+" PDV
+let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
 
 " Syntastic shizzle
 set statusline+=%#warningmsg#
@@ -177,16 +185,20 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" YouCompleteMe and UltiSnips compatibility
 let g:SuperTabDefaultCompletionType    = '<C-n>'
 let g:SuperTabCrMapping                = 0
 
+" YouCompleteMe
 let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 
+" UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+" Ctrl-P
 let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 0
 let g:ctrlp_lazy_update=350
