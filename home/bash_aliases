@@ -11,6 +11,7 @@ alias oz='cd /var/www/onderdelenzoeker'
 alias sa='cd /var/www/sibbenapi'
 alias oudo='cd /var/www/oudo'
 alias rpi='ssh rpi'
+alias e="vim $1"
 
 gitcommit() {
     git commit -m "$*"
