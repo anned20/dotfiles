@@ -15,6 +15,10 @@ sudo apt-get install zsh
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 sudo chsh -s $(which zsh)
 
+echo "${yellow}Installing ZSH plugins${green}"
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
 echo "${yellow}Linking dotfiles${green}"
 
 dotfiles="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"

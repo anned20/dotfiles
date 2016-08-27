@@ -27,11 +27,12 @@ Plugin 'mattn/emmet-vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
+Plugin 'OrangeT/vim-csharp'
+Plugin 'b4winckler/vim-objc'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-expand-region'
 Plugin 'tobyS/vmustache'
-Plugin 'tobyS/pdv'
 Plugin 'tomasr/molokai'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
@@ -161,7 +162,6 @@ nmap <leader>qq :q!<CR>
 
 " Random leader things
 nmap <leader>f :NERDTreeMirrorToggle<CR>
-nmap <leader>p :CtrlPMixed<CR>
 nmap <leader>b :TagbarOpenAutoClose<CR>
 nmap <leader>j :%!python -m json.tool<CR>
 nmap <leader>v :tabedit ~/.vimrc<CR>
@@ -179,9 +179,9 @@ set tags=tags;/
 au InsertEnter * set nonumber
 au InsertLeave * set number
 
-" PDV
-let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
-nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
+" iOS tweak syntax highlighting
+au BufRead,BufNewFile *.xm set filetype=objc
+au BufRead,BufNewFile *.mm set filetype=objc
 
 " Syntastic shizzle
 set statusline+=%#warningmsg#
@@ -208,6 +208,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Ctrl-P
 let g:ctrlp_by_filename = 1
+let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_max_files = 0
 let g:ctrlp_lazy_update=350
 let g:ctrlp_working_path_mode = 'ar'
