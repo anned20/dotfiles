@@ -201,6 +201,8 @@ let g:SuperTabCrMapping                = 0
 let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 
+let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/.vim/Snippets']
+
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
