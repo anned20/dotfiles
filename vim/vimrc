@@ -147,9 +147,9 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 " 	let base16colorspace=256
 " 	source ~/.vimrc_background
 " endif
-colorscheme molokai
 let g:rehash256 = 1
 set term=screen-256color
+colorscheme molokai
 
 " Quickly save using leader+w
 nmap <leader>w :w<CR>
