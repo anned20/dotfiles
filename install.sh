@@ -83,4 +83,8 @@ echo "${yellow}Installing the silver searcher (ag)${green}"
 
 sudo apt-get install silversearcher-ag
 
+echo "${yellow}Installing grip (to view MarkDown locally)${green}"
+
+sudo pip install grip
+
 echo "${yellow}Done!${reset}"
