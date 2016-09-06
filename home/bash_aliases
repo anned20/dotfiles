@@ -12,6 +12,7 @@ alias sa='cd /var/www/sibbenapi'
 alias oudo='cd /var/www/oudo'
 alias rpi='ssh rpi'
 alias e="vim $1"
+alias md="grip"
 
 gitcommit() {
     git commit -m "$*"
