@@ -8,17 +8,20 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'OrangeT/vim-csharp'
 Plugin 'Raimondi/delimitMate'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'b4winckler/vim-objc'
 Plugin 'chriskempson/base16-vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ervandew/supertab'
 Plugin 'evidens/vim-twig'
 Plugin 'groenewege/vim-less'
 Plugin 'honza/vim-snippets'
+Plugin 'jdonaldson/vaxe'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'joonty/vdebug'
 Plugin 'kien/ctrlp.vim'
@@ -27,8 +30,6 @@ Plugin 'mattn/emmet-vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'OrangeT/vim-csharp'
-Plugin 'b4winckler/vim-objc'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-expand-region'
@@ -168,6 +169,7 @@ nmap <leader>j :%!python -m json.tool<CR>
 nmap <leader>v :tabedit ~/.vimrc<CR>
 nmap <leader>r :so $MYVIMRC<CR>
 nmap <leader><space> :let @/=""<CR>
+vmap <leader>y "+y
 
 " Random things
 let NERDTreeQuitOnOpen=1

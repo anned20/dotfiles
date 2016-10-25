@@ -13,6 +13,7 @@ alias oudo='cd /var/www/oudo'
 alias rpi='ssh rpi'
 alias e="vim $1"
 alias md="grip"
+alias mc="docker run -d -p 3000:3000 mongoclient/mongoclient"
 
 gitcommit() {
     git commit -m "$*"
