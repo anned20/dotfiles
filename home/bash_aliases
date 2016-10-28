@@ -35,12 +35,7 @@ gitpull() {
     git pull $*
 }
 
-alias gc=gitcommit
-alias gca=gitcommitall
-alias gpush=gitpush
-alias gpull=gitpull
-alias gc=gitcheckout
-alias gs='git status'
+alias gcam="git commit -am $*"
 alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias gd="git diff"
 alias gb="git rev-parse --abbrev-ref HEAD"
