@@ -41,6 +41,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vimwiki/vimwiki'
 
 call vundle#end()            " required
 
@@ -183,6 +184,7 @@ set nobackup
 set tags=tags;/
 au InsertEnter * set nonumber
 au InsertLeave * set number
+let g:vimwiki_list = [{'path': '~/dotfiles/vimwiki'}]
 
 " iOS tweak syntax highlighting
 au BufRead,BufNewFile *.xm set filetype=objc
