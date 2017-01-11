@@ -8,25 +8,20 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'OrangeT/vim-csharp'
 Plugin 'Raimondi/delimitMate'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'b4winckler/vim-objc'
 Plugin 'chriskempson/base16-vim'
-Plugin 'digitaltoad/vim-pug'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ervandew/supertab'
 Plugin 'evidens/vim-twig'
 Plugin 'groenewege/vim-less'
 Plugin 'honza/vim-snippets'
-Plugin 'jdonaldson/vaxe'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'joonty/vdebug'
 Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -147,12 +142,11 @@ set listchars=tab:▸\ ,eol:¬
 " Or use your leader key + l to toggle on/off
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 
-" colors
-" if filereadable(expand("~/.vimrc_background"))
-" 	let base16colorspace=256
-" 	source ~/.vimrc_background
-" endif
-let g:rehash256 = 1
+if filereadable(expand("~/.vimrc_background"))
+	let base16colorspace=256
+	source ~/.vimrc_background
+endif
+
 set term=screen-256color
 colorscheme molokai
 

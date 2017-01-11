@@ -14,6 +14,7 @@ alias rpi='ssh rpi'
 alias e="vim $1"
 alias md="grip"
 alias mc="docker run -d -p 3000:3000 mongoclient/mongoclient"
+alias tmux="tmux -2" 
 
 gitcommit() {
     git commit -m "$*"
@@ -41,4 +42,4 @@ alias gd="git diff"
 alias gb="git rev-parse --abbrev-ref HEAD"
 alias wgb="echo \$(git rev-parse --abbrev-ref HEAD) > current_branchename; gb"
 
-alias tags=ctags -R --exclude=cache --exclude=web --exclude=git
+alias tags="ctags -R --exclude=cache --exclude=web --exclude=git"

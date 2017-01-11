@@ -18,6 +18,3 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 # DNVM
 [ -s "/home/annedouwe/.dnx/dnvm/dnvm.sh" ] && . "/home/annedouwe/.dnx/dnvm/dnvm.sh" # Load dnvm
-
-### 256 colors!
-TERM=xterm-256color
