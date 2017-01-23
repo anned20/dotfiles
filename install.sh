@@ -4,10 +4,27 @@ red=`tput setaf 1`
 green=`tput setaf 2`
 yellow=`tput setaf 3`
 reset=`tput sgr0`
+dotfiles="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+link() {
+	from="$1"
+	to="$2"
+	echo "Linking '$to' -> '$from'"
+	rm -f $to
+	ln -s "$from" "$to"
+}
 
 echo "${red}It is recommended to answer yes or y to all questions for everything to work properly!"
 echo "${red}You may also need to type 'exit' after you got into the zsh shell to continue the installation"
 read -p "${yellow}Press any key to continue..."
+
+echo "${yellow}Installing i3${green}"
+
+sudo apt-get install i3 i3blocks
+
+echo "${yellow}Doing i3 stuff${green}"
+
+link "$dotfiles/i3/" "$HOME/.i3"
 
 echo "${yellow}Installing ZSH${green}"
 
@@ -20,16 +37,6 @@ echo "${yellow}Installing ZSH plugins${green}"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo "${yellow}Linking dotfiles${green}"
-
-dotfiles="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-link() {
-	from="$1"
-	to="$2"
-	echo "Linking '$to' -> '$from'"
-	rm -f $to
-	ln -s "$from" "$to"
-}
 
 for location in $dotfiles/home/*; do
 	file="${location##*/}"
