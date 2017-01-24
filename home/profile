@@ -9,6 +9,7 @@ export PATH=$PATH:"$HOME/.tmuxifier/bin:$PATH"
 export TMUXIFIER_LAYOUT_PATH="$HOME/.tmuxlayouts"
 export EDITOR="vim"
 export THEOS=/opt/theos
+export TERMINAL=mate-terminal
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"

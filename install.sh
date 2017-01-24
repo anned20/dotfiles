@@ -20,15 +20,36 @@ read -p "${yellow}Press any key to continue..."
 
 echo "${yellow}Installing i3${green}"
 
-sudo apt-get install i3 i3blocks
+sudo apt-get install -y i3 i3status i3lock scrot imagemagick feh mate-terminal
 
 echo "${yellow}Doing i3 stuff${green}"
 
 link "$dotfiles/i3/" "$HOME/.i3"
 
+echo "${yellow}Downloading and installing fonts${green}"
+
+mkdir -p $HOME/tmp
+wget https://www.fontsquirrel.com/fonts/download/roboto -P $HOME/tmp
+mv $HOME/tmp/roboto $HOME/tmp/roboto.zip
+sudo apt-get install -y unzip
+sudo unzip $HOME/tmp/roboto.zip -d /usr/share/fonts
+
+echo "${yellow}Making it pretty${green}"
+
+sudo apt-get install -y gtk2-engines-murrine gtk2-engines-pixbuf gnome-terminal
+wget https://dl.opendesktop.org/api/files/download/id/1482752397/VimixDark-Gtk-Theme.tar.xz -P $HOME/tmp
+tar -xvf $HOME/tmp/VimixDark-Gtk-Theme.tar.xz -C $HOME/tmp
+sudo mv $HOME/tmp/VimixDark/ /usr/share/themes/
+link "$dotfiles/gtk/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
+
+echo "${yellow}Music!${green}"
+
+sudo apt-get install -y python-pip python3-pip setuptools
+sudo pip3 install mps-youtube youtube_dl
+
 echo "${yellow}Installing ZSH${green}"
 
-sudo apt-get install zsh
+sudo apt-get install -y zsh
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 sudo chsh -s $(which zsh)
 
@@ -43,6 +64,7 @@ for location in $dotfiles/home/*; do
 	file="${file}"
 	link "$location" "$HOME/.$file"
 done
+chmod +x $HOME/.lock.sh
 
 echo "${yellow}Doing vim stuff${green}"
 
@@ -53,7 +75,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.v
 
 echo "${yellow}Installing CTags${green}"
 
-sudo apt-get install exuberant-ctags
+sudo apt-get install -y exuberant-ctags
 
 echo "${yellow}Installing vim plugins${green}"
 
@@ -73,7 +95,7 @@ cd $dotfiles/vim/bundle/YouCompleteMe
 echo "${yellow}Installing TPM (tmux plugin manager)${green}"
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-sudo apt-get install xclip
+sudo apt-get install -y xclip
 
 echo "${yellow}Doing tmuxifier stuff${green}"
 
@@ -88,7 +110,7 @@ base16_atelier-seaside
 
 echo "${yellow}Installing the silver searcher (ag)${green}"
 
-sudo apt-get install silversearcher-ag
+sudo apt-get install -y silversearcher-ag
 
 echo "${yellow}Installing grip (to view MarkDown locally)${green}"
 

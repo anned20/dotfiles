@@ -5,41 +5,14 @@ alias ..4='cd ../../../../'
 alias ..5='cd ../../../../../'
 alias ll='ls -l'
 alias la='ls -la'
-alias sib='tmuxifier load-session sibben'
-alias mm='tmuxifier load-window mox-members'
-alias oz='cd /var/www/onderdelenzoeker'
-alias sa='cd /var/www/sibbenapi'
 alias oudo='cd /var/www/oudo'
 alias rpi='ssh rpi'
-alias e="vim $1"
-alias md="grip"
-alias mc="docker run -d -p 3000:3000 mongoclient/mongoclient"
 alias tmux="tmux -2" 
-
-gitcommit() {
-    git commit -m "$*"
-}
-
-gitcommitall() {
-    git commit -a -m "$*"
-}
-
-gitpush() {
-    git push origin $*
-}
-
-gitcheckout() {
-    git checkout "$*"
-}
-
-gitpull() {
-    git pull $*
-}
-
-alias gcam="git commit -am $*"
 alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias gd="git diff"
 alias gb="git rev-parse --abbrev-ref HEAD"
 alias wgb="echo \$(git rev-parse --abbrev-ref HEAD) > current_branchename; gb"
-
-alias tags="ctags -R --exclude=cache --exclude=web --exclude=git"
+alias tags="ctags -R --exclude=cache --exclude=web --exclude=git --exclude=vendor"
+alias vup="amixer -D pulse sset Master 5%+"
+alias vdown="amixer -D pulse sset Master 5%-"
+alias setvol='_setvol() {amixer -D pulse sset Master "$1"%;}; _setvol'
