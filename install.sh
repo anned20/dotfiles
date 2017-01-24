@@ -44,8 +44,10 @@ link "$dotfiles/gtk/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
 
 echo "${yellow}Music!${green}"
 
-sudo apt-get install -y python-pip python3-pip setuptools
-sudo pip3 install mps-youtube youtube_dl
+sudo apt-get install -y python-pip python3-pip ffmpeg ncmpcpp mpd
+sudo pip3 install setuptools mps-youtube youtube_dl
+link "$dotfiles/mpd/" "$HOME/.mpd"
+link "$dotfiles/ncmpcpp/" "$HOME/.ncmpcpp"
 
 echo "${yellow}Installing ZSH${green}"
 
