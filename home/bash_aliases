@@ -16,3 +16,5 @@ alias tags="ctags -R --exclude=cache --exclude=web --exclude=git --exclude=vendo
 alias vup="amixer -D pulse sset Master 5%+"
 alias vdown="amixer -D pulse sset Master 5%-"
 alias setvol='_setvol() {amixer -D pulse sset Master "$1"%;}; _setvol'
+alias dytp='_dytp() {youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s" "$1";}; _dytp'
+alias wttr="curl wttr.in/Twijzelerheide"

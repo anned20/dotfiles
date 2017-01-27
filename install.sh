@@ -18,9 +18,25 @@ echo "${red}It is recommended to answer yes or y to all questions for everything
 echo "${red}You may also need to type 'exit' after you got into the zsh shell to continue the installation"
 read -p "${yellow}Press any key to continue..."
 
-echo "${yellow}Installing i3${green}"
+echo "${yellow}Installing i3 deps and building${green}"
 
-sudo apt-get install -y i3 i3status i3lock scrot imagemagick feh mate-terminal
+sudo add-apt-repository -y ppa:tjormola/i3-unstable
+sudo apt-get update
+sudo apt-get install -y libxcb1-dev libxcb-keysyms1-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-xinerama0-dev libxcb-xrm-dev
+mkdir -p $HOME/tmp
+git clone https://github.com/Airblader/i3.git $HOME/tmp/i3-gaps
+cd $HOME/tmp/i3-gaps
+autoreconf --force --install
+rm -rf build/
+mkdir -p build && cd build/
+../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+make
+sudo make install
+cd $dotfiles
+
+echo "${yellow}Installing i3 addons${green}"
+
+sudo apt-get install -y i3status i3lock scrot imagemagick feh gunar gvfs compton
 
 echo "${yellow}Doing i3 stuff${green}"
 
@@ -41,10 +57,12 @@ wget https://dl.opendesktop.org/api/files/download/id/1482752397/VimixDark-Gtk-T
 tar -xvf $HOME/tmp/VimixDark-Gtk-Theme.tar.xz -C $HOME/tmp
 sudo mv $HOME/tmp/VimixDark/ /usr/share/themes/
 link "$dotfiles/gtk/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
+npm install -g i3-style
+wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
 
 echo "${yellow}Music!${green}"
 
-sudo apt-get install -y python-pip python3-pip ffmpeg ncmpcpp mpd
+sudo apt-get install -y python-pip python3-pip ffmpeg cmus
 sudo pip3 install setuptools mps-youtube youtube_dl
 link "$dotfiles/mpd/" "$HOME/.mpd"
 link "$dotfiles/ncmpcpp/" "$HOME/.ncmpcpp"

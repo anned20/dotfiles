@@ -33,7 +33,7 @@ floating_modifier $mod
 bindsym $mod+Return exec mate-terminal
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
@@ -67,7 +67,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+g split g
+bindsym $mod+g split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -93,16 +93,18 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # tags
-set $tag1 "1: www"
-set $tag2 "2: term"
-set $tag3 "3: music"
+set $tag1 "1: Web"
+set $tag2 "2: Terminal"
+set $tag3 "3: Music"
+set $tag4 "4: Telegram"
+set $tag5 "5: SSH"
 
 # switch to workspace
 bindsym $mod+1 workspace $tag1
 bindsym $mod+2 workspace $tag2
 bindsym $mod+3 workspace $tag3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
+bindsym $mod+4 workspace $tag4
+bindsym $mod+5 workspace $tag5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
@@ -113,8 +115,8 @@ bindsym $mod+0 workspace 10
 bindsym $mod+Shift+1 move container to workspace $tag1
 bindsym $mod+Shift+2 move container to workspace $tag2
 bindsym $mod+Shift+3 move container to workspace $tag3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+4 move container to workspace $tag4
+bindsym $mod+Shift+5 move container to workspace $tag5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
@@ -159,30 +161,57 @@ bindsym $mod+r mode "resize"
 bar {
 	position bottom
 	status_command i3status
-    colors{
-        background #232323
-        statusline #DCDCDC
-    }
+	colors {
+		separator #AAAAAA
+		background #1f2326
+		statusline #FFFFFF
+		focused_workspace #9FCA56 #9FCA56 #151718
+		active_workspace #DCCD69 #DCCD69 #151718
+		inactive_workspace #1f2326 #1f2326 #AAAAAA
+		urgent_workspace #CE4045 #CE4045 #FFFFFF
+	}
 }
 
 # my stuff
 mouse_warping none
+for_window [window_role="browser"] border none
+bindsym $mod+u [urgent=latest] focus
 
-#colors!
-client.focused          #3F8AC2 #096BAA #00BAA7 #00DA8E
-client.focused_inactive #333333 #5F676A #ffffff #484e50
-client.unfocused        #333333 #424242 #888888 #292d2e
-client.urgent           #C10004 #900000 #ffffff #900000
+gaps inner 10
+gaps outer 5
+smart_gaps on
+
+# modes
+# Launch mode, one app per key.
+set $launch "[C]hrome, [T]hunar, T[e]legram, [P]avucontrol"
+mode $launch {
+    bindsym c exec google-chrome; mode "default"
+    bindsym t exec thunar; mode "default"
+	bindsym e exec telegram-desktop; mode "default"
+	bindsym p exec pavucontrol; mode "default"
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+bindsym $mod+c mode $launch
 
 # keybindings
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+"
 bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-"
 bindsym XF86AudioMute exec "amixer -D pulse sset Master toggle"
-bindsym Control+mod1+l exec "$HOME/.lock.sh"
+bindsym Control+mod1+l exec "$HOME/dotfiles/scripts/lock.sh"
+bindsym $mod+F1 exec "$HOME/dotfiles/scripts/power.py"
+bindsym $mod+Tab workspace back_and_forth
 
 # autostart
 exec "setxkbmap -layout us"
-exec --no-startup-id shutter
-exec --no-startup-id telegram-desktop
-exec --no-startup-id google-chrome-stable
+exec "xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1"
+exec "xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' -0.5"
 exec --no-startup-id feh --bg-fill $HOME/dotfiles/img/bg.jpg
+exec --no-startup-id nm-applet
+exec --no-startup-id compton -b --config "$HOME/.compton.conf"
+
+client.focused #4F99D3 #4F99D3 #151718 #9FCA56
+client.focused_inactive #9FCA56 #9FCA56 #151718 #A074C4
+client.unfocused #1f2326 #1f2326 #AAAAAA #A074C4
+client.urgent #CE4045 #CE4045 #FFFFFF #DCCD69
