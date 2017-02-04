@@ -36,7 +36,7 @@ cd $dotfiles
 
 echo "${yellow}Installing i3 addons${green}"
 
-sudo apt-get install -y i3status i3lock scrot imagemagick feh gunar gvfs compton
+sudo apt-get install -y i3status i3lock scrot imagemagick feh thunar gvfs compton
 
 echo "${yellow}Doing i3 stuff${green}"
 
@@ -59,6 +59,10 @@ sudo mv $HOME/tmp/VimixDark/ /usr/share/themes/
 link "$dotfiles/gtk/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
 npm install -g i3-style
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
+
+echo "${yellow}Add this to your crontab by using crontab -e${green}"
+echo "*/15 * * * * $HOME/dotfiles/scripts/setbackground.sh"
+read -p "${yellow}Press any key to continue..."
 
 echo "${yellow}Music!${green}"
 
