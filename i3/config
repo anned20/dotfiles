@@ -92,19 +92,12 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# tags
-set $tag1 "1: Web"
-set $tag2 "2: Terminal"
-set $tag3 "3: Music"
-set $tag4 "4: Telegram"
-set $tag5 "5: SSH"
-
 # switch to workspace
-bindsym $mod+1 workspace $tag1
-bindsym $mod+2 workspace $tag2
-bindsym $mod+3 workspace $tag3
-bindsym $mod+4 workspace $tag4
-bindsym $mod+5 workspace $tag5
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
@@ -112,11 +105,11 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $tag1
-bindsym $mod+Shift+2 move container to workspace $tag2
-bindsym $mod+Shift+3 move container to workspace $tag3
-bindsym $mod+Shift+4 move container to workspace $tag4
-bindsym $mod+Shift+5 move container to workspace $tag5
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
@@ -158,19 +151,6 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-	position bottom
-	status_command i3status
-	colors {
-		separator #AAAAAA
-		background #1f2326
-		statusline #FFFFFF
-		focused_workspace #9FCA56 #9FCA56 #151718
-		active_workspace #DCCD69 #DCCD69 #151718
-		inactive_workspace #1f2326 #1f2326 #AAAAAA
-		urgent_workspace #CE4045 #CE4045 #FFFFFF
-	}
-}
 
 # my stuff
 mouse_warping none
@@ -209,6 +189,7 @@ exec "setxkbmap -layout us"
 exec "xset r rate 300 30"
 exec "xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1"
 exec "xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' -0.5"
+exec_always --no-startup-id "polybar -c $HOME/.polybar.conf bar"
 exec --no-startup-id "$HOME/dotfiles/scripts/setbackground.sh"
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -b --config "$HOME/.compton.conf"

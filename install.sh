@@ -34,6 +34,15 @@ make
 sudo make install
 cd $dotfiles
 
+echo "${yellow}Installing polybar${green}"
+sudo apt-get install cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto libxcb-xrm-dev i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev
+git clone --recursive https://github.com/jaagr/polybar ~/tmp/polybar
+mkdir ~/tmp/polybar/build
+cd ~/tmp/polybar/build
+cmake ..
+sudo make install
+cd $dotfiles
+
 echo "${yellow}Installing i3 addons${green}"
 
 sudo apt-get install -y i3status i3lock scrot imagemagick feh thunar gvfs compton
@@ -66,10 +75,13 @@ read -p "${yellow}Press any key to continue..."
 
 echo "${yellow}Music!${green}"
 
-sudo apt-get install -y python-pip python3-pip ffmpeg cmus
+sudo apt-get install -y python-pip python3-pip ffmpeg cmus mpd ncmpcpp
 sudo pip3 install setuptools mps-youtube youtube_dl
 link "$dotfiles/mpd/" "$HOME/.mpd"
 link "$dotfiles/ncmpcpp/" "$HOME/.ncmpcpp"
+
+link "$dotfiles/i3/" "$HOME/.i3"
+
 
 echo "${yellow}Installing ZSH${green}"
 
