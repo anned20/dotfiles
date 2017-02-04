@@ -61,7 +61,7 @@ npm install -g i3-style
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
 
 echo "${yellow}Add this to your crontab by using crontab -e${green}"
-echo "*/15 * * * * $HOME/dotfiles/scripts/setbackground.sh"
+echo "*/15 * * * * ~/dotfiles/scripts/setbackground.sh"
 read -p "${yellow}Press any key to continue..."
 
 echo "${yellow}Music!${green}"
