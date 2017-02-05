@@ -58,6 +58,7 @@ wget https://www.fontsquirrel.com/fonts/download/roboto -P $HOME/tmp
 mv $HOME/tmp/roboto $HOME/tmp/roboto.zip
 sudo apt-get install -y unzip
 sudo unzip $HOME/tmp/roboto.zip -d /usr/share/fonts
+sudo fc-cache -f -v
 
 echo "${yellow}Making it pretty${green}"
 
@@ -66,7 +67,7 @@ wget https://dl.opendesktop.org/api/files/download/id/1482752397/VimixDark-Gtk-T
 tar -xvf $HOME/tmp/VimixDark-Gtk-Theme.tar.xz -C $HOME/tmp
 sudo mv $HOME/tmp/VimixDark/ /usr/share/themes/
 link "$dotfiles/gtk/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
-npm install -g i3-style
+sudo npm install -g i3-style
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
 sudo cp $HOME/dotfiles/scripts/brightness /usr/bin/brightness
 
