@@ -45,7 +45,7 @@ cd $dotfiles
 
 echo "${yellow}Installing i3 addons${green}"
 
-sudo apt-get install -y i3status i3lock scrot imagemagick feh thunar gvfs compton python-gtk2-dev
+sudo apt-get install -y i3status i3lock scrot imagemagick feh thunar gvfs compton python-gtk2-dev rofi
 
 echo "${yellow}Doing i3 stuff${green}"
 
