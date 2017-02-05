@@ -68,6 +68,7 @@ sudo mv $HOME/tmp/VimixDark/ /usr/share/themes/
 link "$dotfiles/gtk/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
 npm install -g i3-style
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
+sudo cp $HOME/dotfiles/scripts/brightness /usr/bin/brightness
 
 echo "${yellow}Add this to your crontab by using crontab -e${green}"
 echo "*/15 * * * * ~/dotfiles/scripts/setbackground.sh"
@@ -79,9 +80,6 @@ sudo apt-get install -y python-pip python3-pip ffmpeg cmus mpd ncmpcpp
 sudo pip3 install setuptools mps-youtube youtube_dl
 link "$dotfiles/mpd/" "$HOME/.mpd"
 link "$dotfiles/ncmpcpp/" "$HOME/.ncmpcpp"
-
-link "$dotfiles/i3/" "$HOME/.i3"
-
 
 echo "${yellow}Installing ZSH${green}"
 
