@@ -192,8 +192,8 @@ exec "xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1"
 exec "xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' -0.5"
 exec --no-startup-id "$HOME/dotfiles/scripts/setbackground.sh"
 exec --no-startup-id nm-applet
-exec --no-startup-id compton -b --config "$HOME/.compton.conf"
-exec_always --no-startup-id "$HOME/dotfiles/scripts/polybar.sh"
+#exec --no-startup-id compton -b --config "$HOME/.compton.conf"
+#xec_always --no-startup-id "$HOME/dotfiles/scripts/polybar.sh"
 exec_always --no-startup-id "xrdb -merge ~/.Xresources"
 
 client.focused #4F99D3 #4F99D3 #151718 #9FCA56
