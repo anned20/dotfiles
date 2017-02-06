@@ -156,6 +156,7 @@ bindsym $mod+r mode "resize"
 # my stuff
 mouse_warping none
 for_window [window_role="browser"] border none
+for_window [class="mate_terminal"] border none
 bindsym $mod+u [urgent=latest] focus
 
 gaps inner 10
