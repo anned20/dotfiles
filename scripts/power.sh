@@ -1,11 +1,15 @@
-input=$(echo "Shutdown\nReboot\nSuspend\nCancel" | rofi -show -dmenu)
+input=$(echo "Lock\nLogout\nSuspend\nReboot\nShutdown\nCancel" | rofi -show -dmenu)
 
 if [ $input = 'Shutdown' ]; then
-	shutdown now
+	systemctl poweroff
 elif [ $input = 'Reboot' ]; then
-	reboot
+	systemctl reboot
 elif [ $input = 'Suspend' ]; then
-	pm-suspend
+	systemctl suspend
+elif [ $input = 'Logout' ]; then
+	i3-msg exit	
+elif [ $input = 'Lock' ]; then
+	~/dotfiles/scripts/lock.sh
 elif [ $input = 'Cancel' ]; then
 	exit
 fi
