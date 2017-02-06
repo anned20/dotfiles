@@ -58,6 +58,9 @@ wget https://www.fontsquirrel.com/fonts/download/roboto -P $HOME/tmp
 mv $HOME/tmp/roboto $HOME/tmp/roboto.zip
 sudo apt-get install -y unzip
 sudo unzip $HOME/tmp/roboto.zip -d /usr/share/fonts
+wget http://fontawesome.io/assets/font-awesome-4.7.0.zip -O ~/tmp/fontawesome.zip
+unzip ~/tmp/fontawesome.zip
+sudo cp font-awesome-4.7.0/fonts/fontawesome-webfont.ttf /usr/share/fonts/fontawesome.ttf
 sudo fc-cache -f -v
 
 echo "${yellow}Making it pretty${green}"
@@ -150,5 +153,9 @@ sudo apt-get install -y silversearcher-ag
 echo "${yellow}Installing grip (to view MarkDown locally)${green}"
 
 sudo pip install grip
+
+echo "${yellow}Cleaning up${green}"
+
+rm -rf ~/tmp/fontawesome*
 
 echo "${yellow}Done!${reset}"
