@@ -1,9 +1,10 @@
 source ~/.bash_aliases
 
-export ANDROID_HOME=/home/sibben/Android/Sdk
-export PATH=$PATH:/home/sibben/Android/Sdk/tools
-export PATH=$PATH:/home/sibben/IntelliJ_IDEA/idea/bin
-export PATH=$PATH:"$HOME/.tmuxifier/bin:$PATH"
+export ANDROID_HOME=~/Android/Sdk
+export PATH=$PATH:~/Android/Sdk/tools
+export PATH=$PATH:~/IntelliJ_IDEA/idea/bin
+export PATH=$PATH:~/.tmuxifier/bin
+export PATH=$PATH:~/.config/composer/vendor/bin/
 export TMUXIFIER_LAYOUT_PATH="$HOME/.tmuxlayouts"
 export EDITOR="vim"
 export THEOS=/opt/theos
