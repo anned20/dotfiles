@@ -193,6 +193,7 @@ exec "xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' -0.5"
 exec --no-startup-id "$HOME/dotfiles/scripts/setbackground.sh"
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -b --config "$HOME/.compton.conf"
+exec --no-startup-id xautolock -time 5 -detectsleep -locker '$HOME/dotfiles/scripts/lock.sh' &
 exec_always --no-startup-id "$HOME/dotfiles/scripts/polybar.sh"
 exec_always --no-startup-id "xrdb -merge ~/.Xresources"
 

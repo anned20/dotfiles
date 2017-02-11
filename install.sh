@@ -45,7 +45,7 @@ cd $dotfiles
 
 echo "${yellow}Installing i3 addons${green}"
 
-sudo apt-get install -y i3status i3lock scrot imagemagick feh thunar gvfs compton python-gtk2-dev rofi
+sudo apt-get install -y i3status i3lock xautolock scrot imagemagick feh thunar gvfs compton python-gtk2-dev rofi
 
 echo "${yellow}Doing i3 stuff${green}"
 
@@ -65,11 +65,10 @@ sudo fc-cache -f -v
 
 echo "${yellow}Making it pretty${green}"
 
-sudo apt-get install -y gtk2-engines-murrine gtk2-engines-pixbuf gnome-terminal
-wget https://dl.opendesktop.org/api/files/download/id/1482752397/VimixDark-Gtk-Theme.tar.xz -P $HOME/tmp
-tar -xvf $HOME/tmp/VimixDark-Gtk-Theme.tar.xz -C $HOME/tmp
-sudo mv $HOME/tmp/VimixDark/ /usr/share/themes/
-link "$dotfiles/gtk/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
+sudo apt-get install -y gtk2-engines-murrine gtk2-engines-pixbuf mate-terminal
+wget https://github.com/vinceliuice/vimix-gtk-themes/archive/Gtk3.22-12.25.zip -P $HOME/tmp
+unzip $HOME/tmp/Gtk3.22-12.25.zip -d $HOME/tmp
+sudo $HOME/tmp/vimix-gtk-themes-Gtk3.22-12.25/Vimix-installer.sh
 sudo npm install -g i3-style
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
 sudo cp $HOME/dotfiles/scripts/brightness /usr/bin/brightness
