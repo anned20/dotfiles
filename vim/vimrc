@@ -22,6 +22,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'joonty/vdebug'
 Plugin 'kien/ctrlp.vim'
+Plugin 'larsbs/vimterial'
 Plugin 'mattn/emmet-vim'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -72,6 +73,12 @@ try
 	set undofile
 catch
 endtry
+
+" 
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
 
 " Encoding
 set encoding=utf-8
@@ -142,11 +149,6 @@ set listchars=tab:▸\ ,eol:¬
 " Or use your leader key + l to toggle on/off
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 
-if filereadable(expand("~/.vimrc_background"))
-	let base16colorspace=256
-	source ~/.vimrc_background
-endif
-
 set term=screen-256color
 colorscheme molokai
 
@@ -214,11 +216,10 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Ctrl-P
-let g:ctrlp_by_filename = 1
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_max_files = 0
 let g:ctrlp_lazy_update=350
 let g:ctrlp_working_path_mode = 'ar'
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g'
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendors/*,*/tmp/*,*/web/js/*,*/web/css/*
