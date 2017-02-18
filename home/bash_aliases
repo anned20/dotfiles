@@ -12,7 +12,7 @@ alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%
 alias gd="git diff"
 alias gb="git rev-parse --abbrev-ref HEAD"
 alias wgb="echo \$(git rev-parse --abbrev-ref HEAD) > current_branchename; gb"
-alias tags="ctags -R --exclude=cache --exclude=web --exclude=git --exclude=vendor"
+alias tags="ctags-exuberant -R --PHP-kinds=cidf --fields=fksta src vendor/sibben"
 alias vup="amixer -D pulse sset Master 5%+"
 alias vdown="amixer -D pulse sset Master 5%-"
 alias setvol='_setvol() {amixer -D pulse sset Master "$1"%;}; _setvol'
