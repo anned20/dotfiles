@@ -1,0 +1,11 @@
+Host oudo
+	HostName www.oudo.nl
+	User oudo_nl
+
+Host testoudo
+	HostName test.oudo.nl
+	User test_oudo_nl
+
+Host yoccar
+	HostName www.yoccar.com
+	User yoccar

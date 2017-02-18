@@ -103,6 +103,8 @@ for location in $dotfiles/home/*; do
 done
 chmod +x $HOME/.lock.sh
 
+link "$dotfiles/ssh/config" "$HOME/.ssh/config"
+
 echo "${yellow}Doing vim stuff${green}"
 
 link "$dotfiles/vim/vimrc" "$HOME/.vimrc"
