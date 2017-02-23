@@ -64,9 +64,6 @@ set relativenumber
 " Show file stats
 set ruler
 
-" Blink cursor on error instead of beeping (grr)
-set visualbell t_vb=
-
 " Persistent undo
 try
 	set undodir=~/.vim_undodir
@@ -172,6 +169,7 @@ vmap <leader>y "+y
 
 " Random things
 let NERDTreeQuitOnOpen=1
+let g:nerdtree_tabs_open_on_gui_startup=2
 let g:gitgutter_sign_column_always = 1
 set formatoptions-=t
 set noswapfile

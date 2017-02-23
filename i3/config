@@ -93,7 +93,6 @@ bindsym $mod+u [urgent=latest] focus
 
 gaps inner 10
 gaps outer 5
-smart_gaps on
 
 set $launch "[C]hrome, [T]hunar, T[e]legram, [P]avucontrol"
 mode $launch {
