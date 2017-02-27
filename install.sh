@@ -66,9 +66,10 @@ sudo fc-cache -f -v
 echo "${yellow}Making it pretty${green}"
 
 sudo apt-get install -y gtk2-engines-murrine gtk2-engines-pixbuf mate-terminal
-wget https://github.com/vinceliuice/vimix-gtk-themes/archive/Gtk3.22-12.25.zip -P $HOME/tmp
-unzip $HOME/tmp/Gtk3.22-12.25.zip -d $HOME/tmp
-sudo $HOME/tmp/vimix-gtk-themes-Gtk3.22-12.25/Vimix-installer.sh
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
+wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key
+sudo apt-key add - < Release.key
+sudo apt-get update && sudo apt-get install arc-theme
 sudo npm install -g i3-style
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
 sudo cp $HOME/dotfiles/scripts/brightness /usr/bin/brightness
