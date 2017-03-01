@@ -1,0 +1,30 @@
+"*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "709d8bf6-d16f-4043-a6ab-7983db257500"
+  "autocomplete-plus":
+    minimumWordLength: 2
+  core:
+    autoHideMenuBar: true
+    projectHome: "/var/www"
+    restorePreviousWindowsOnStart: false
+    telemetryConsent: "limited"
+    themes: [
+      "seti-ui"
+      "monokai-seti"
+    ]
+  editor:
+    atomicSoftTabs: false
+    softTabs: false
+    tabLength: 4
+    tabType: "hard"
+  "seti-ui":
+    compactView: true
+    fileIcons: false
+    themeColor: "Orange"
+  "vim-mode-plus":
+    ignoreCaseForSearch: true
+    useClipboardAsDefaultRegister: true
+    useSmartcaseForSearch: true
+  welcome:
+    showOnStartup: false

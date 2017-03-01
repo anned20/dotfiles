@@ -1,0 +1,4 @@
+'.text.html.php':
+	'var_dump':
+		'prefix': 'vd'
+		'body': 'var_dump(\'$1\');$2'

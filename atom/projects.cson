@@ -1,0 +1,16 @@
+[
+  {
+    title: "Mobilox Members"
+    paths: [
+      "/var/www/mobilox-members"
+    ]
+    devMode: true
+  }
+  {
+    title: "Wordpress"
+    paths: [
+      "/var/www/wordpress"
+    ]
+    devMode: true
+  }
+]

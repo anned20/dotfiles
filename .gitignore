@@ -1,2 +1,6 @@
 vim/bundle/*
 fonts
+atom/\.*
+atom/packages/*
+atom/storage/*
+atom/compile-cache/*
