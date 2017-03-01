@@ -1,4 +1,7 @@
+Onderdelenzoeker /var/www/onderdelenzoeker
+Mobilox-members /var/www/mobilox-members
+Mobilox-admin /var/www/mobilox-admin
+Mobilox-www /var/www/mobilox-www
+SibbenAPI /var/www/sibbenapi
+core-bundle /var/www/sibbenapi/vendor/sibben/core-bundle
 Oudo /var/www/oudo
-
-dev ~/Documents/dev
-Oudo ~/Documents/oudo

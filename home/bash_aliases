@@ -18,5 +18,3 @@ alias vdown="amixer -D pulse sset Master 5%-"
 alias setvol='_setvol() {amixer -D pulse sset Master "$1"%;}; _setvol'
 alias dytp='_dytp() {youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s" "$1";}; _dytp'
 alias wttr="curl wttr.in/Twijzelerheide"
-alias vim="gvim $1 > /dev/null 2>&1"
-alias meld='GTK_THEME=/usr/share/themes/Mint-X/gtk-3.0/gtk.css meld'

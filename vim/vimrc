@@ -6,6 +6,7 @@ filetype off
 
 " Load plugins here (pathogen or vundle)
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin()
 
 Plugin 'Raimondi/delimitMate'
@@ -214,10 +215,8 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Ctrl-P
-let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_max_files = 0
-let g:ctrlp_lazy_update=350
 let g:ctrlp_working_path_mode = 'ar'
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g'
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendors/*,*/tmp/*,*/web/js/*,*/web/css/*
