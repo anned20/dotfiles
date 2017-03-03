@@ -10,6 +10,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'Raimondi/delimitMate'
+Plugin 'Shougo/denite.nvim'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'VundleVim/Vundle.vim'
@@ -22,8 +23,6 @@ Plugin 'groenewege/vim-less'
 Plugin 'honza/vim-snippets'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'joonty/vdebug'
-Plugin 'kien/ctrlp.vim'
-Plugin 'larsbs/vimterial'
 Plugin 'mattn/emmet-vim'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -185,10 +184,8 @@ let g:vimwiki_list = [{'path': '~/dotfiles/vimwiki'}]
 au BufRead,BufNewFile *.xm set filetype=objc
 au BufRead,BufNewFile *.mm set filetype=objc
 
-" Syntastic shizzle
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" Airline
+let g:airline_powerline_fonts = 1
 
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 set laststatus=2
@@ -214,9 +211,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-" Ctrl-P
-let g:ctrlp_max_files = 0
-let g:ctrlp_working_path_mode = 'ar'
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+" Denite
+nmap <leader>b :Denite file_rec<CR>
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendors/*,*/tmp/*,*/web/js/*,*/web/css/*

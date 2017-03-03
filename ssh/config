@@ -9,3 +9,6 @@ Host testoudo
 Host yoccar
 	HostName www.yoccar.com
 	User yoccar
+
+Host *
+	ServerAliveInterval 120

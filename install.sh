@@ -108,6 +108,9 @@ link "$dotfiles/ssh/config" "$HOME/.ssh/config"
 
 echo "${yellow}Doing vim stuff${green}"
 
+sudo add-apt-repository -y ppa:jonathonf/vim
+sudo apt-get update
+sudo apt-get install -y vim
 link "$dotfiles/vim/vimrc" "$HOME/.vimrc"
 link "$dotfiles/vim/" "$HOME/.vim"
 
