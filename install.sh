@@ -18,6 +18,10 @@ echo "${red}It is recommended to answer yes or y to all questions for everything
 echo "${red}You may also need to type 'exit' after you got into the zsh shell to continue the installation"
 read -p "${yellow}Press any key to continue..."
 
+echo "${yellow}Installing Termite${green}"
+
+wget -O - https://raw.githubusercontent.com/Corwind/termite-install/master/termite-install.sh | bash
+
 echo "${yellow}Installing i3 deps and building${green}"
 
 sudo add-apt-repository -y ppa:tjormola/i3-unstable

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+source=$1
+target=$2
+
+while true; do 
+  inotifywatch -e modify -e create -e moved_to -t 1 "$source" 2>/dev/null |
+     grep total && 
+
+  ## The -u option to cp causes it to only copy files 
+  ## that are newer in $source than in $target. Any files
+  ## not present in $target will be copied.
+
+  echo "Copying files"
+
+  cp "$source"/* "$target"/
+done
