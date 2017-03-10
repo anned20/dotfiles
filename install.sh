@@ -22,6 +22,31 @@ echo "${yellow}Installing Termite${green}"
 
 wget -O - https://raw.githubusercontent.com/Corwind/termite-install/master/termite-install.sh | bash
 
+echo "${yellow}Installing VS Code${green}"
+
+wget https://go.microsoft.com/fwlink/?LinkID=760868 -O ~/tmp/vscode.deb
+sudo dpkg -i ~/tmp/vscode.deb
+
+EXTENSIONS=(
+"EditorConfig.EditorConfig" \
+"HookyQR.beautify" \
+"Zignd.html-css-class-completion" \
+"abusaidm.html-snippets" \
+"alefragnani.project-manager" \
+"donjayamanne.githistory" \
+"donjayamanne.python" \
+"joelday.docthis" \
+"robertohuertasm.vscode-icons" \
+"vscodevim.vim" \
+"waderyan.gitblame" \
+"wcwhitehead.bootstrap-3-snippets" \
+)
+
+for EXTENSION in ${EXTENSIONS[@]}
+do
+    code --install-extension $EXTENSION
+done
+
 echo "${yellow}Installing i3 deps and building${green}"
 
 sudo add-apt-repository -y ppa:tjormola/i3-unstable
@@ -110,50 +135,9 @@ chmod +x $HOME/.lock.sh
 
 link "$dotfiles/ssh/config" "$HOME/.ssh/config"
 
-echo "${yellow}Doing vim stuff${green}"
-
-sudo add-apt-repository -y ppa:jonathonf/vim
-sudo apt-get update
-sudo apt-get install -y vim
-link "$dotfiles/vim/vimrc" "$HOME/.vimrc"
-link "$dotfiles/vim/" "$HOME/.vim"
-
-git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
-
 echo "${yellow}Installing CTags${green}"
 
 sudo apt-get install -y exuberant-ctags
-
-echo "${yellow}Installing vim plugins${green}"
-
-vim +PluginInstall +qall
-
-read -r -p "${yellow}Clean up vim plugins in .vim/bundle? ${red}[y/N] ${green}" response
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
-then
-	vim +PluginClean +qall
-fi
-
-echo "${yellow}Installing YouCompleteMe${green}"
-
-cd $dotfiles/vim/bundle/YouCompleteMe
-./install.py
-
-echo "${yellow}Installing TPM (tmux plugin manager)${green}"
-
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-sudo apt-get install -y xclip
-
-echo "${yellow}Doing tmuxifier stuff${green}"
-
-git clone https://github.com/jimeh/tmuxifier.git $HOME/.tmuxifier
-link "$dotfiles/tmuxlayouts/" "$HOME/.tmuxlayouts"
-
-echo "${yellow}Doing colorscheme stuff${green}"
-
-git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
-source $HOME/.bashrc
-base16_atelier-seaside
 
 echo "${yellow}Installing the silver searcher (ag)${green}"
 
