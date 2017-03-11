@@ -47,6 +47,10 @@ do
     code --install-extension $EXTENSION
 done
 
+link $DOTFILES/vscode/projects.json ~/.config/Code/User/
+link $DOTFILES/vscode/settings.json ~/.config/Code/User/
+link $DOTFILES/vscode/vsicons.settings.json ~/.config/Code/User/
+
 echo "${yellow}Installing i3 deps and building${green}"
 
 sudo add-apt-repository -y ppa:tjormola/i3-unstable
