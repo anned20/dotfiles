@@ -139,6 +139,31 @@ chmod +x $HOME/.lock.sh
 
 link "$dotfiles/ssh/config" "$HOME/.ssh/config"
 
+echo "${yellow}Doing vim stuff${green}"
+
+sudo add-apt-repository -y ppa:jonathonf/vim
+sudo apt-get update
+sudo apt-get install -y vim
+link "$dotfiles/vim/vimrc" "$HOME/.vimrc"
+link "$dotfiles/vim/" "$HOME/.vim"
+
+git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+
+echo "${yellow}Installing vim plugins${green}"
+
+vim +PluginInstall +qall
+
+read -r -p "${yellow}Clean up vim plugins in .vim/bundle? ${red}[y/N] ${green}" response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+	vim +PluginClean +qall
+fi
+
+echo "${yellow}Installing YouCompleteMe${green}"
+
+cd $dotfiles/vim/bundle/YouCompleteMe
+./install.py
+
 echo "${yellow}Installing CTags${green}"
 
 sudo apt-get install -y exuberant-ctags
