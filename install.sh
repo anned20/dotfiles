@@ -172,6 +172,11 @@ echo "${yellow}Installing the silver searcher (ag)${green}"
 
 sudo apt-get install -y silversearcher-ag
 
+echo "${yellow}Installing FZF${green}"
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
 echo "${yellow}Installing grip (to view MarkDown locally)${green}"
 
 sudo pip install grip
