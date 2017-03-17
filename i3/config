@@ -106,9 +106,15 @@ mode $launch {
 }
 bindsym $mod+c mode $launch
 
+# Media player controls
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+"
 bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-"
 bindsym XF86AudioMute exec "amixer -D pulse sset Master toggle"
+bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
 bindsym Control+mod1+l exec "$HOME/dotfiles/scripts/lock.sh"
 bindsym $mod+z exec "$HOME/dotfiles/scripts/power.sh"
 bindsym $mod+Tab workspace back_and_forth

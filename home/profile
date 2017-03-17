@@ -5,6 +5,7 @@ export PATH=$PATH:~/Android/Sdk/tools
 export PATH=$PATH:~/IntelliJ_IDEA/idea/bin
 export PATH=$PATH:~/.tmuxifier/bin
 export PATH=$PATH:~/.config/composer/vendor/bin/
+export PATH=$PATH:~/bin/
 export TMUXIFIER_LAYOUT_PATH="$HOME/.tmuxlayouts"
 export EDITOR="vim"
 export THEOS=/opt/theos

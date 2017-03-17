@@ -6,11 +6,11 @@ filetype off
 
 " Load plugins here (pathogen or vundle)
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.fzf
 
 call vundle#begin()
 
 Plugin 'Raimondi/delimitMate'
-Plugin 'Shougo/denite.nvim'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'VundleVim/Vundle.vim'
@@ -213,7 +213,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-" Denite
-nmap <leader>b :Denite file_rec<CR>
+" fzf
+nmap <leader>a :Files<CR>
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendors/*,*/tmp/*,*/web/js/*,*/web/css/*
