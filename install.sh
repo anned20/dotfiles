@@ -18,38 +18,11 @@ echo "${red}It is recommended to answer yes or y to all questions for everything
 echo "${red}You may also need to type 'exit' after you got into the zsh shell to continue the installation"
 read -p "${yellow}Press any key to continue..."
 
-echo "${yellow}Installing Termite${green}"
+echo "${yellow}Installing Hyper${green}"
 
-wget -O - https://raw.githubusercontent.com/Corwind/termite-install/master/termite-install.sh | bash
-
-echo "${yellow}Installing VS Code${green}"
-
-wget https://go.microsoft.com/fwlink/?LinkID=760868 -O ~/tmp/vscode.deb
-sudo dpkg -i ~/tmp/vscode.deb
-
-EXTENSIONS=(
-"EditorConfig.EditorConfig" \
-"HookyQR.beautify" \
-"Zignd.html-css-class-completion" \
-"abusaidm.html-snippets" \
-"alefragnani.project-manager" \
-"donjayamanne.githistory" \
-"donjayamanne.python" \
-"joelday.docthis" \
-"robertohuertasm.vscode-icons" \
-"vscodevim.vim" \
-"waderyan.gitblame" \
-"wcwhitehead.bootstrap-3-snippets" \
-)
-
-for EXTENSION in ${EXTENSIONS[@]}
-do
-    code --install-extension $EXTENSION
-done
-
-link $DOTFILES/vscode/projects.json ~/.config/Code/User/
-link $DOTFILES/vscode/settings.json ~/.config/Code/User/
-link $DOTFILES/vscode/vsicons.settings.json ~/.config/Code/User/
+mkdir -p ~/tmp/
+wget https://hyper-updates.now.sh/download/linux_deb -O ~/tmp/hyper.deb
+sudo dpkg -i ~/tmp/hyper.deb
 
 echo "${yellow}Installing i3 deps and building${green}"
 

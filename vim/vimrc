@@ -150,6 +150,7 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 
 set term=xterm-256color
 colorscheme molokai
+hi Normal guibg=NONE ctermbg=NONE
 
 " Quickly save using leader+w
 nmap <leader>w :w<CR>
