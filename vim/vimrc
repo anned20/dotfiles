@@ -31,7 +31,6 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-expand-region'
 Plugin 'tobyS/vmustache'
 Plugin 'tomasr/molokai'
@@ -150,7 +149,6 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 
 set term=xterm-256color
 colorscheme molokai
-hi Normal guibg=NONE ctermbg=NONE
 
 " Quickly save using leader+w
 nmap <leader>w :w<CR>
