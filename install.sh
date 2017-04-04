@@ -28,7 +28,7 @@ echo "${yellow}Installing i3 deps and building${green}"
 
 sudo add-apt-repository -y ppa:tjormola/i3-unstable
 sudo apt-get update
-sudo apt-get install -y libxcb1-dev libxcb-keysyms1-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-xinerama0-dev libxcb-xrm-dev dunst
+sudo apt-get install -y libxcb1-dev libxcb-keysyms1-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-xinerama0-dev libxcb-xrm-dev dunst libanyevent-i3-perl
 mkdir -p $HOME/tmp
 git clone https://github.com/Airblader/i3.git $HOME/tmp/i3-gaps
 cd $HOME/tmp/i3-gaps

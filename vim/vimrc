@@ -166,7 +166,7 @@ nmap <leader>j :%!python -m json.tool<CR>
 nmap <leader>v :tabedit ~/.vimrc<CR>
 nmap <leader>r :so $MYVIMRC<CR>
 nmap <leader><space> :let @/=""<CR>
-vmap <leader>y "+y
+nmap <silent><Leader><C-]> <C-w><C-]><C-w>T
 
 " Random things
 let NERDTreeQuitOnOpen=1
