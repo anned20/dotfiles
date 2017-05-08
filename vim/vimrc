@@ -15,6 +15,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'captbaritone/better-indent-support-for-php-with-html'
 Plugin 'chriskempson/base16-vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ervandew/supertab'
@@ -25,6 +26,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'joonty/vdebug'
 Plugin 'junegunn/fzf.vim'
+Plugin 'jwilm/i3-vim-focus'
 Plugin 'mattn/emmet-vim'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -86,13 +88,8 @@ set nowrap
 set textwidth=79
 set formatoptions=cqrn1
 set formatoptions-=t
-set tabstop=4
 set shiftwidth=4
-set softtabstop=4
-set noexpandtab
-set noshiftround
-set autoindent
-set smarttab
+set tabstop=4
 
 " Cursor motion
 set scrolloff=5
@@ -180,6 +177,13 @@ set tags=tags;/
 au InsertEnter * set nonumber
 au InsertLeave * set number
 let g:vimwiki_list = [{'path': '~/dotfiles/vimwiki'}]
+let g:vdebug_options= {
+			\    "port" : 9999,
+			\}
+map gwl :call Focus('right', 'l')<CR>
+map gwh :call Focus('left', 'h')<CR>
+map gwk :call Focus('up', 'k')<CR>
+map gwj :call Focus('down', 'j')<CR>
 
 " iOS tweak syntax highlighting
 au BufRead,BufNewFile *.xm set filetype=objc

@@ -6,11 +6,14 @@ export PATH=$PATH:~/IntelliJ_IDEA/idea/bin
 export PATH=$PATH:~/.tmuxifier/bin
 export PATH=$PATH:~/.config/composer/vendor/bin/
 export PATH=$PATH:~/bin/
+export PATH=$PATH:~/.composer/vendor/bin/
 export TMUXIFIER_LAYOUT_PATH="$HOME/.tmuxlayouts"
 export EDITOR="vim"
 export THEOS=/opt/theos
 export TERMINAL=mate-terminal
 export TERM=xterm-256color
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -20,3 +23,5 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # DNVM
 [ -s "/home/annedouwe/.dnx/dnvm/dnvm.sh" ] && . "/home/annedouwe/.dnx/dnvm/dnvm.sh" # Load dnvm
+
+export PATH="$HOME/.cargo/bin:$PATH"

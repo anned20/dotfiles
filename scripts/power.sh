@@ -1,11 +1,11 @@
-input=$(echo "Lock\nLogout\nSuspend\nReboot\nShutdown\nCancel" | rofi -show -dmenu)
+input=$(echo "UREN LOGGEN\nLock\nLogout\nSuspend\nReboot\nShutdown\nCancel" | rofi -show -dmenu)
 
 if [ $input = 'Shutdown' ]; then
-	systemctl poweroff
+	sm "UREN LOGGEN" && systemctl poweroff
 elif [ $input = 'Reboot' ]; then
 	systemctl reboot
 elif [ $input = 'Suspend' ]; then
-	systemctl suspend
+	sm "UREN LOGGEN" && systemctl suspend
 elif [ $input = 'Logout' ]; then
 	i3-msg exit	
 elif [ $input = 'Lock' ]; then

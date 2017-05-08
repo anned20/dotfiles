@@ -44,27 +44,27 @@ bindsym $mod+Shift+space floating toggle
 
 bindsym $mod+space focus mode_toggle
 
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -94,17 +94,37 @@ bindsym $mod+u [urgent=latest] focus
 gaps inner 10
 gaps outer 5
 
-set $launch "[C]hrome, [T]hunar, T[e]legram, [P]avucontrol"
-mode $launch {
-    bindsym c exec google-chrome; mode "default"
-    bindsym t exec thunar; mode "default"
-	bindsym e exec telegram-desktop; mode "default"
-	bindsym p exec pavucontrol; mode "default"
+set $gaps-current "Current: [s]maller inner, [S]maller outer, [l]arger inner, [L]arger outer"
+mode $gaps-current {
+	bindsym s gaps inner current minus 5
+	bindsym l gaps inner current plus 5
+	bindsym Shift+s gaps outer current minus 5
+	bindsym Shift+l gaps outer current plus 5
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
-bindsym $mod+c mode $launch
+
+set $gaps-all "All: [s]maller inner, [S]maller outer, [l]arger inner, [L]arger outer"
+mode $gaps-all {
+	bindsym s gaps inner all minus 5
+	bindsym l gaps inner all plus 5
+	bindsym Shift+s gaps outer all minus 5
+	bindsym Shift+l gaps outer all plus 5
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+set $gaps "[c]urrent, [a]ll"
+mode $gaps {
+	bindsym c mode $gaps-current;
+	bindsym a mode $gaps-all;
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+bindsym $mod+c mode $gaps
 
 # Media player controls
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+"
@@ -118,7 +138,6 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym Control+mod1+l exec "$HOME/dotfiles/scripts/lock.sh"
 bindsym $mod+z exec "$HOME/dotfiles/scripts/power.sh"
 bindsym $mod+Tab workspace back_and_forth
-bindsym $mod+Control+Shift+k focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, focus parent, kill
 bindsym $mod+x exec "i3-msg 'append_layout ~/.i3/development.json' && termite | termite | termite"
 
 exec "setxkbmap -layout us"
