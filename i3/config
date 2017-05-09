@@ -129,8 +129,13 @@ exec --no-startup-id "$HOME/dotfiles/scripts/setbackground.sh"
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -b --config "$HOME/.compton.conf"
 exec --no-startup-id xautolock -time 5 -detectsleep -locker '$HOME/dotfiles/scripts/lock.sh'
-exec_always --no-startup-id "$HOME/dotfiles/scripts/polybar.sh"
+# exec_always --no-startup-id "$HOME/dotfiles/scripts/polybar.sh"
 exec_always --no-startup-id "xrdb -merge ~/.Xresources"
+
+bar {
+    status_command i3status
+	position top
+}
 
 client.focused #4F99D3 #4F99D3 #151718 #9FCA56
 client.focused_inactive #9FCA56 #9FCA56 #151718 #A074C4

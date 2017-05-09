@@ -20,3 +20,5 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # DNVM
 [ -s "/home/annedouwe/.dnx/dnvm/dnvm.sh" ] && . "/home/annedouwe/.dnx/dnvm/dnvm.sh" # Load dnvm
+
+export PATH="$HOME/.cargo/bin:$PATH"
