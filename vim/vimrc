@@ -7,6 +7,7 @@ filetype off
 " Load plugins here (pathogen or vundle)
 set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=~/.fzf
+runtime! ftplugin/man.vim
 
 call vundle#begin()
 
@@ -15,7 +16,6 @@ Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'captbaritone/better-indent-support-for-php-with-html'
 Plugin 'chriskempson/base16-vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ervandew/supertab'
@@ -23,10 +23,11 @@ Plugin 'evidens/vim-twig'
 Plugin 'godlygeek/tabular'
 Plugin 'groenewege/vim-less'
 Plugin 'honza/vim-snippets'
+Plugin 'jaxbot/browserlink.vim'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'joonty/vdebug'
 Plugin 'junegunn/fzf.vim'
-Plugin 'jwilm/i3-vim-focus'
+Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -40,7 +41,6 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vimwiki/vimwiki'
 
 call vundle#end()            " required
 
@@ -144,7 +144,8 @@ set listchars=tab:▸\ ,eol:¬
 " Or use your leader key + l to toggle on/off
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 
-set term=xterm-256color
+set termguicolors
+set background=dark
 colorscheme molokai
 
 " Quickly save using leader+w

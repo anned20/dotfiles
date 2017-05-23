@@ -1,21 +1,14 @@
-alias ..='cd ..'
-alias ..2='cd ../../'
-alias ..3='cd ../../../'
-alias ..4='cd ../../../../'
-alias ..5='cd ../../../../../'
-alias ll='ls -l'
-alias la='ls -la'
-alias oudo='cd /var/www/oudo'
-alias rpi='ssh rpi'
-alias tmux="tmux -2" 
+alias ..="cd .."
+alias ll="ls -l"
+alias la="ls -la"
+alias oudo="cd /var/www/oudo"
 alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias gd="git diff"
 alias gb="git rev-parse --abbrev-ref HEAD"
 alias wgb="echo \$(git rev-parse --abbrev-ref HEAD) > current_branchename; gb"
 alias tags="ctags-exuberant -R --PHP-kinds=cidf --fields=fksta src vendor/sibben"
-alias vup="amixer -D pulse sset Master 5%+"
-alias vdown="amixer -D pulse sset Master 5%-"
-alias setvol='_setvol() {amixer -D pulse sset Master "$1"%;}; _setvol'
-alias dytp='_dytp() {youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s" "$1";}; _dytp'
 alias wttr="curl wttr.in/Twijzelerheide"
 alias 538="google-chrome --app=http://www.538.nl/live/tv/index.php"
+alias mox="cd /var/www/mobilox-members"
+alias api="cd /var/www/sibbenapi"
+alias oz="cd /var/www/onderdelenzoeker"
