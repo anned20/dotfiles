@@ -12,3 +12,5 @@ alias 538="google-chrome --app=http://www.538.nl/live/tv/index.php"
 alias mox="cd /var/www/mobilox-members"
 alias api="cd /var/www/sibbenapi"
 alias oz="cd /var/www/onderdelenzoeker"
+
+w() { cd /var/www/$@ }
