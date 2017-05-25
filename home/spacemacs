@@ -101,7 +101,7 @@
 
 (defun dotspacemacs/user-config ()
   (setq evil-escape-key-sequence "jk")
-  (editorconfig-mode 1)
+  (setq editorconfig-mode 1)
   )
 
 (custom-set-variables

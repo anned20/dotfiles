@@ -126,6 +126,11 @@ mode $gaps {
 }
 bindsym $mod+c mode $gaps
 
+bar {
+    status_command    i3status
+    position          top
+}
+
 # Media player controls
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+"
 bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-"
