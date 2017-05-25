@@ -6,6 +6,8 @@ Just my dotfiles, nothing more, nothing less.
 
 So simple! You just clone this repository and run `./install.sh`
 
+Install `yarn` or `npm` and install Chromix-Too. Then install the Chrome plugin and ensure the `chromix-too-server` is running.
+
 #License
 
  * ----------------------------------------------------------------------------
