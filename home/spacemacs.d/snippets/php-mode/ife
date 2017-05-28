@@ -1,0 +1,10 @@
+#name: ife
+#key: ife
+#contributor: Anne Douwe Bouma <annedouwebouma@gmail.com>
+#name: ife
+# --
+if ($0) {
+   $1
+} else ($2) {
+  $3;
+}

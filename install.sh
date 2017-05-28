@@ -19,6 +19,13 @@ command_exists () {
     type "$1" > /dev/null 2>&1
 }
 
+# Add used ppas
+addppas() {
+    sudo add-apt-repository -y ppa:nilarimogard/webupd8
+    sudo add-apt-repository -y ppa:tjormola/i3-unstable
+    sudo apt-get update
+}
+
 # Link all dotfiles from $dotfiles/home to the home folder
 linkfiles () {
     echo "${yellow}Linking dotfiles${reset}"
@@ -66,8 +73,6 @@ installi3() {
     if ! command_exists i3; then
         echo "${yellow}Installing i3 deps and building${green}"
 
-        sudo add-apt-repository -y ppa:tjormola/i3-unstable
-        sudo apt-get update
         sudo apt-get install -y libxcb1-dev libxcb-keysyms1-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-xinerama0-dev libxcb-xrm-dev libanyevent-i3-perl
         git clone https://github.com/Airblader/i3.git /tmp/i3-gaps
         /tmp/i3-gaps
@@ -86,6 +91,7 @@ installi3() {
 
 # Install spacemacs if not already installed
 installspacemacs() {
+    sudo apt-get install -y emacs
     if [ -d ~/.emacs.d ]; then
         read -r -p "${yellow}Emacs directory already exists. Delete .emacs.d and clone again?${red}[y/N] ${reset}" response
         if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
@@ -155,10 +161,12 @@ if ! [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
 then
     exit 1
 else
+    addppas
     linkfiles
     installtermite
     installi3
     installpolybar
+    installspacemacs
     installfonts
     installtheme
     misc

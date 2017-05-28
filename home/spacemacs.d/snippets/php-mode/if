@@ -1,0 +1,8 @@
+#name: if
+#key: if
+#contributor: Anne Douwe Bouma <annedouwebouma@gmail.com>
+#name: if
+# --
+if ($0) {
+   $1
+}

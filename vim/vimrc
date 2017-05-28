@@ -55,7 +55,7 @@ filetype plugin on
 let mapleader = "\<space>"
 
 " Remap jj to the Esc key
-imap jj <Esc>
+imap jk <Esc>
 
 " Security
 set modelines=0

@@ -1,0 +1,6 @@
+#name: var_dump die
+#key: vdd
+#contributor: Anne Douwe Bouma <annedouwebouma@gmail.com>
+#name: var_dump(...); die();
+# --
+var_dump($1); die();
