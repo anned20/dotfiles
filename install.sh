@@ -107,13 +107,6 @@ installspacemacs() {
         echo "${yellow}Cloning spacemacs${reset}"
         git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
     fi
-
-	echo "${yellow}Cloning org-jira${reset}"
-    if [ -d ~/.emacs.d/private/org-jira ]; then
-		cd ~/.emacs.d/private/org-jira && git pull
-    else
-		git clone ~/.emacs.d/private/org-jira
-    fi
 }
 
 # Install polybar if not already installed

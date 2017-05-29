@@ -20,7 +20,8 @@
 	 (auto-completion :variables
 					  auto-completion-enable-snippets-in-popup t
 					  auto-completion-enable-help-tooltip t)
-	 git
+	 (git :variables
+        git-magit-status-fullscreen t)
 	 (version-control
 	  :variables
 	  version-control-diff-side 'left
@@ -30,9 +31,6 @@
 	 (shell :variables
 			shell-default-height 30
 			shell-default-position 'bottom)
-	 (org-jira :variables
-			   jiralib-url "https://stor-e.atlassian.net/secure/RapidBoard.jspa?rapidView=2"
-			   org-jira-working-dir "~/org-jira")
 	 )
    dotspacemacs-additional-packages '(
 									  (vue-mode :location (recipe
