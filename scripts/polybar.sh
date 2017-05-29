@@ -8,6 +8,7 @@ if [ $(hostname) = 'annedouwe-pc' ]; then
 	xrandr --output HDMI1 --auto --left-of HDMI3
 	MONITOR=HDMI-1 polybar -c $HOME/.polybar.conf bar &
 	MONITOR=HDMI-3 polybar -c $HOME/.polybar.conf bar &
+	killall i3bar 
 else
 	MONITOR=eDP-1-1 polybar -c $HOME/.polybar.conf bar &
 fi

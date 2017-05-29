@@ -13,8 +13,8 @@
     "percent": 0.6,
     "swallows": [
        {
-		   "class": "^Termite$",
-		   "instance": "^termite$"
+		   "class": "^Emacs24$",
+		   "instance": "^Emacs24$"
        }
     ],
     "type": "con"
