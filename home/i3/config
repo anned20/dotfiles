@@ -143,7 +143,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym Control+mod1+l exec "$HOME/dotfiles/scripts/lock.sh"
 bindsym $mod+z exec "$HOME/dotfiles/scripts/power.sh"
 bindsym $mod+Tab workspace back_and_forth
-bindsym $mod+x exec "i3-msg 'append_layout ~/.i3/development.json' && emacs | termite | termite"
+bindsym $mod+x exec "i3-msg 'append_layout ~/.i3/development.json' && termite | termite | termite"
 
 exec "setxkbmap -layout us"
 exec "xset r rate 300 30"
