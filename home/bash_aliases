@@ -13,4 +13,4 @@ alias mox="cd /var/www/mobilox-members"
 alias api="cd /var/www/sibbenapi"
 alias oz="cd /var/www/onderdelenzoeker"
 
-w() { cd /var/www/$@ }
+w() { cd /var/www/$@; }
