@@ -148,7 +148,7 @@ installtheme() {
 # Misc things
 misc() {
     echo "${yellow}Installing some addons and utilities${green}"
-    sudo apt-get install -y i3status i3lock xautolock scrot imagemagick feh thunar gvfs compton rofi unzip exuberant-ctags silversearcher-ag
+    sudo apt-get install -y i3status i3lock xautolock scrot imagemagick feh thunar gvfs compton rofi synapse unzip exuberant-ctags silversearcher-ag
 
     echo "${yellow}Installing FZF${green}"
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
