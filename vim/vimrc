@@ -11,17 +11,24 @@ runtime! ftplugin/man.vim
 
 call vundle#begin()
 
+" Syntax
+Plugin 'evidens/vim-twig'
+Plugin 'groenewege/vim-less'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'othree/html5.vim'
+Plugin 'tobyS/vmustache'
+Plugin 'tomasr/molokai'
+
 Plugin 'Raimondi/delimitMate'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'chriskempson/base16-vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ervandew/supertab'
-Plugin 'evidens/vim-twig'
 Plugin 'godlygeek/tabular'
-Plugin 'groenewege/vim-less'
 Plugin 'honza/vim-snippets'
 Plugin 'jaxbot/browserlink.vim'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -29,16 +36,13 @@ Plugin 'joonty/vdebug'
 Plugin 'junegunn/fzf.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
-Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'terryma/vim-expand-region'
-Plugin 'tobyS/vmustache'
-Plugin 'tomasr/molokai'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
@@ -54,7 +58,7 @@ filetype plugin on
 " Pick a leader key
 let mapleader = "\<space>"
 
-" Remap jj to the Esc key
+" Remap jk to the Esc key
 imap jk <Esc>
 
 " Security
@@ -64,21 +68,15 @@ set modelines=0
 set number
 set relativenumber
 
+set smartindent
+set autoindent
+
 " Show file stats
 set ruler
 
 " Persistent undo
-try
-	set undodir=~/.vim_undodir
-	set undofile
-catch
-endtry
-
-" 
-set guioptions-=m
-set guioptions-=T
-set guioptions-=r
-set guioptions-=L
+set undodir=~/.vim_undodir
+set undofile
 
 " Encoding
 set encoding=utf-8
@@ -96,13 +94,6 @@ set scrolloff=5
 set backspace=indent,eol,start
 set matchpairs+=<:> " use % to jump between pairs
 runtime! macros/matchit.vim
-
-" Move up/down editor lines
-nnoremap j gj
-nnoremap k gk
-
-" Allow hidden buffers
-set hidden
 
 " Rendering
 set ttyfast
@@ -127,11 +118,6 @@ set smartcase
 set showmatch
 map <leader>c :let @/=''<cr> " clear search
 
-" Remap help key.
-inoremap <F1> <ESC>:set invfullscreen<CR>a
-nnoremap <F1> :set invfullscreen<CR>
-vnoremap <F1> :set invfullscreen<CR>
-
 " Tab shortcuts
 nnoremap <leader>p :tabprevious<CR>
 nnoremap <leader>n :tabnext<CR>
@@ -148,59 +134,30 @@ set termguicolors
 set background=dark
 colorscheme molokai
 
-" Quickly save using leader+w
-nmap <leader>w :w<CR>
-
-" Quickly save and quit using leader+wq
-nmap <leader>wq :wq<CR>
-
-" Quit without saving using leader+qq
-nmap <leader>qq :q!<CR>
-
 " Random leader things
 nmap <leader>f :NERDTreeMirrorToggle<CR>
 nmap <leader>b :TagbarOpenAutoClose<CR>
 nmap <leader>j :%!python -m json.tool<CR>
 nmap <leader>v :tabedit ~/.vimrc<CR>
 nmap <leader>r :so $MYVIMRC<CR>
-nmap <leader><space> :let @/=""<CR>
 nmap <silent><Leader><C-]> <C-w><C-]><C-w>T
+nmap <c-b> :CtrlPBuffer<cr>
 
 " Random things
 let NERDTreeQuitOnOpen=1
 let g:nerdtree_tabs_open_on_gui_startup=2
 let g:gitgutter_sign_column_always = 1
-set formatoptions-=t
 set noswapfile
 set cursorline
 set nobackup
 set tags=tags;/
-au InsertEnter * set nonumber
-au InsertLeave * set number
-let g:vimwiki_list = [{'path': '~/dotfiles/vimwiki'}]
 let g:vdebug_options= {
 			\    "port" : 9999,
 			\}
-map gwl :call Focus('right', 'l')<CR>
-map gwh :call Focus('left', 'h')<CR>
-map gwk :call Focus('up', 'k')<CR>
-map gwj :call Focus('down', 'j')<CR>
-
-" iOS tweak syntax highlighting
-au BufRead,BufNewFile *.xm set filetype=objc
-au BufRead,BufNewFile *.mm set filetype=objc
-
-" Airline
-let g:airline_powerline_fonts = 1
 
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 set laststatus=2
 set t_Co=256
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 " YouCompleteMe and UltiSnips compatibility
 let g:SuperTabDefaultCompletionType    = '<C-n>'
