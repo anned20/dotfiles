@@ -1,0 +1,9 @@
+#name: DocBlock
+#key: db
+#contributor: Anne Douwe Bouma <annedouwebouma@gmail.com>
+# --
+/**
+ * $1
+ *
+ * @return $2
+ */$0

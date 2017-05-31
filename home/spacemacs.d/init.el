@@ -13,10 +13,11 @@
      python
      html
      javascript
-     phpplus
+     php
      emacs-lisp
 
      ;; Tools
+     semantic
      helm
      markdown
      org
@@ -36,6 +37,12 @@
      )
    dotspacemacs-additional-packages '(
                                       editorconfig
+                                      (company-php
+                                       :after 'company
+                                       :config (add-hook 'web-mode-hook '(lambda ()
+                                                                           (company-mode t)
+                                                                           (add-to-list 'company-backends 'company-ac-php-backend)
+                                                                           (define-key evil-insert-state-map (kbd "<C-tab>") 'company-complete))))
                                       (vue-mode :location (recipe
                                                            :fetcher github
                                                            :repo "codefalling/vue-mode"))
@@ -150,6 +157,9 @@
   (global-company-mode)
   (my-setup-indent 4)
   (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.htm\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
   )
 
 (custom-set-variables
@@ -157,6 +167,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-backends
+   (quote
+    (php-extras-company company-bbdb company-nxml company-css company-eclim company-semantic company-clang company-xcode company-cmake company-capf company-files
+                        (company-dabbrev-code company-gtags company-etags company-keywords)
+                        company-oddmuse company-dabbrev)))
  '(indent-tabs-mode t)
  '(package-selected-packages
    (quote
