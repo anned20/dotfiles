@@ -19,6 +19,7 @@ Plugin 'othree/html5.vim'
 Plugin 'tobyS/vmustache'
 Plugin 'tomasr/molokai'
 
+Plugin 'vimwiki/vimwiki'
 Plugin 'Raimondi/delimitMate'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
@@ -118,11 +119,6 @@ set smartcase
 set showmatch
 map <leader>c :let @/=''<cr> " clear search
 
-" Tab shortcuts
-nnoremap <leader>p :tabprevious<CR>
-nnoremap <leader>n :tabnext<CR>
-nnoremap <leader>c :tabclose<CR>
-
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬
 " Uncomment this to enable by default:
@@ -135,13 +131,19 @@ set background=dark
 colorscheme molokai
 
 " Random leader things
-nmap <leader>f :NERDTreeMirrorToggle<CR>
-nmap <leader>b :TagbarOpenAutoClose<CR>
+nmap <leader><tab> :b#<CR>
+nmap <leader>ff :Files<CR>
+nmap <leader>bf :Buffers<CR>
+nmap <leader>tt :TagbarOpenAutoClose<CR>
 nmap <leader>j :%!python -m json.tool<CR>
-nmap <leader>v :tabedit ~/.vimrc<CR>
-nmap <leader>r :so $MYVIMRC<CR>
+nmap <leader>ve :tabedit ~/.vimrc<CR>
+nmap <leader>vr :so $MYVIMRC<CR>
 nmap <silent><Leader><C-]> <C-w><C-]><C-w>T
-nmap <c-b> :CtrlPBuffer<cr>
+
+let g:vimwiki_list = [
+			\{'path': '~/Dropbox/VimWiki/personal.wiki'},
+			\{'path': '~/Dropbox/VimWiki/tech.wiki'}
+			\]
 
 " Random things
 let NERDTreeQuitOnOpen=1
@@ -173,8 +175,5 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/.vim/Snippets']
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" fzf
-nmap <leader>a :Files<CR>
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendors/*,*/tmp/*,*/web/js/*,*/web/css/*

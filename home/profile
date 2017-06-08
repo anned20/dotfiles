@@ -12,8 +12,6 @@ export EDITOR="vim"
 export THEOS=/opt/theos
 export TERMINAL=mate-terminal
 export TERM=xterm-256color
-export FZF_DEFAULT_COMMAND='ag -g ""'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -25,3 +23,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 [ -s "/home/annedouwe/.dnx/dnvm/dnvm.sh" ] && . "/home/annedouwe/.dnx/dnvm/dnvm.sh" # Load dnvm
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# FZF
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

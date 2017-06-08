@@ -8,8 +8,8 @@ bindsym $mod+Return exec termite
 
 bindsym $mod+q kill
 
-#bindsym $mod+d exec "rofi -combi-modi window,drun -show combi -modi combi"
-bindsym $mod+d exec "synapse"
+bindsym $mod+d exec "rofi -combi-modi window,drun -show combi -modi combi"
+#bindsym $mod+d exec "synapse"
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
