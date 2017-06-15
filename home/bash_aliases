@@ -13,4 +13,9 @@ alias mox="cd /var/www/mobilox-members"
 alias api="cd /var/www/sibbenapi"
 alias oz="cd /var/www/onderdelenzoeker"
 
+alias gmerge="git merge --no-ff"
+alias gmergetool="git mergetool"
+alias cusc="composer update sibben/core-bundle"
+alias ci="composer install"
+
 w() { cd /var/www/$@; }

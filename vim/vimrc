@@ -20,6 +20,9 @@ Plugin 'tobyS/vmustache'
 Plugin 'tomasr/molokai'
 
 Plugin 'vimwiki/vimwiki'
+Plugin 'wakatime/vim-wakatime'
+Plugin 'w0rp/ale'
+Plugin 'alvan/vim-php-manual'
 Plugin 'Raimondi/delimitMate'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
@@ -121,9 +124,6 @@ map <leader>c :let @/=''<cr> " clear search
 
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬
-" Uncomment this to enable by default:
-" set list " To enable by default
-" Or use your leader key + l to toggle on/off
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 
 set termguicolors
@@ -133,7 +133,8 @@ colorscheme molokai
 " Random leader things
 nmap <leader><tab> :b#<CR>
 nmap <leader>ff :Files<CR>
-nmap <leader>bf :Buffers<CR>
+nmap <leader>ft :NERDTreeToggle<CR>
+nmap <leader>bb :Buffers<CR>
 nmap <leader>tt :TagbarOpenAutoClose<CR>
 nmap <leader>j :%!python -m json.tool<CR>
 nmap <leader>ve :tabedit ~/.vimrc<CR>
@@ -142,7 +143,7 @@ nmap <silent><Leader><C-]> <C-w><C-]><C-w>T
 
 let g:vimwiki_list = [
 			\{'path': '~/Dropbox/VimWiki/personal.wiki'},
-			\{'path': '~/Dropbox/VimWiki/tech.wiki'}
+			\{'path': '~/Dropbox/VimWiki/work.wiki'}
 			\]
 
 " Random things
@@ -151,7 +152,6 @@ let g:nerdtree_tabs_open_on_gui_startup=2
 let g:gitgutter_sign_column_always = 1
 set noswapfile
 set cursorline
-set nobackup
 set tags=tags;/
 let g:vdebug_options= {
 			\    "port" : 9999,
@@ -160,6 +160,7 @@ let g:vdebug_options= {
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 set laststatus=2
 set t_Co=256
+set hidden
 
 " YouCompleteMe and UltiSnips compatibility
 let g:SuperTabDefaultCompletionType    = '<C-n>'

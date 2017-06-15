@@ -23,6 +23,7 @@ command_exists () {
 addppas() {
     sudo add-apt-repository -y ppa:nilarimogard/webupd8
     sudo add-apt-repository -y ppa:tjormola/i3-unstable
+	sudo add-apt-repository -y ppa:jonathonf/vim
     sudo apt-get update
 }
 
@@ -89,24 +90,26 @@ installi3() {
     fi
 }
 
-# Install spacemacs if not already installed
-installspacemacs() {
-    sudo apt-get install -y emacs
-    if [ -d ~/.emacs.d ]; then
-        read -r -p "${yellow}Emacs directory already exists. Delete .emacs.d and clone again?${red}[y/N] ${reset}" response
-        if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
-        then
-            echo "${yellow}Removing .emacs.d${reset}"
-            rm -rf ~/.emacs.d
-            echo "${yellow}Cloning spacemacs${reset}"
-            git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-        else
-            echo "${yellow}Didn't remove .emacs.d${reset}"
-        fi
-    else
-        echo "${yellow}Cloning spacemacs${reset}"
-        git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-    fi
+installnvm() {
+	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+
+	nvm install node
+
+	nvm alias default node
+}
+
+# Install vim if not already installed
+installvim() {
+	sudo apt-get install -y vim
+	link "$dotfiles/vim/vimrc" "$HOME/.vimrc"
+	link "$dotfiles/vim/" "$HOME/.vim"
+
+
+	git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+
+	vim +PluginInstall +qall
+
+	$dotfiles/vim/bundle/YouCompleteMe/install.py --tern-completer
 }
 
 # Install polybar if not already installed
@@ -166,7 +169,8 @@ else
     installtermite
     installi3
     installpolybar
-    installspacemacs
+    installnvm
+    installvim
     installfonts
     installtheme
     misc
