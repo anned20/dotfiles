@@ -21,9 +21,15 @@ command_exists () {
 
 # Add used ppas
 addppas() {
+	sudo apt install -y software-properties-common
+
     sudo add-apt-repository -y ppa:nilarimogard/webupd8
     sudo add-apt-repository -y ppa:tjormola/i3-unstable
 	sudo add-apt-repository -y ppa:jonathonf/vim
+
+	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+	sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+
     sudo apt-get update
 }
 
@@ -37,7 +43,8 @@ linkfiles () {
         link "$location" "$HOME/.$file"
     done
 
-    link "$dotfiles/termiteconf/config" "~/.config/termite/config"
+    mkdir -p ~/.config/termite/
+    link "$dotfiles/termiteconf/config" "~/.config/termite/"
 }
 
 # Install termite if not already installed
@@ -74,24 +81,26 @@ installi3() {
     if ! command_exists i3; then
         echo "${yellow}Installing i3 deps and building${green}"
 
-        sudo apt-get install -y libxcb1-dev libxcb-keysyms1-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-xinerama0-dev libxcb-xrm-dev libanyevent-i3-perl
+        sudo apt-get install -y libxcb1-dev libxcb-keysyms1-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-xinerama0-dev libxcb-xrm-dev libanyevent-i3-perl libxcb-cursor-dev libxkbcommon-dev libxkbcommon-x11-dev
         git clone https://github.com/Airblader/i3.git /tmp/i3-gaps
-        /tmp/i3-gaps
+        cd /tmp/i3-gaps
         autoreconf --force --install
         rm -rf build/
         mkdir -p build && cd build/
         ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
         make
         sudo make install
-
-        link "$dotfiles/i3/" "$HOME/.i3"
     else
         echo "${yellow}i3 is already installed${green}"
     fi
 }
 
 installnvm() {
+	sudo apt install -y curl
+
 	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+
+	source ~/.nvm/nvm.sh
 
 	nvm install node
 
@@ -100,7 +109,7 @@ installnvm() {
 
 # Install vim if not already installed
 installvim() {
-	sudo apt-get install -y vim
+	sudo apt-get install -y vim-gtk3
 	link "$dotfiles/vim/vimrc" "$HOME/.vimrc"
 	link "$dotfiles/vim/" "$HOME/.vim"
 
@@ -109,6 +118,7 @@ installvim() {
 
 	vim +PluginInstall +qall
 
+	sudo apt-get install python-dev libxml2-dev libxslt-dev
 	$dotfiles/vim/bundle/YouCompleteMe/install.py --tern-completer
 }
 
@@ -116,7 +126,7 @@ installvim() {
 installpolybar() {
     if ! command_exists polybar; then
         echo "${yellow}Installing polybar${green}"
-        sudo apt-get install cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto libxcb-xrm-dev i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev
+        sudo apt-get install cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto libxcb-xrm-dev libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev
         git clone --recursive https://github.com/jaagr/polybar /tmp/polybar
         mkdir -p /tmp/polybar/build
         cd /tmp/polybar/build
@@ -151,7 +161,21 @@ installtheme() {
 # Misc things
 misc() {
     echo "${yellow}Installing some addons and utilities${green}"
-    sudo apt-get install -y i3status i3lock xautolock scrot imagemagick feh thunar gvfs compton rofi synapse unzip exuberant-ctags silversearcher-ag
+    sudo apt-get install -y i3status \
+		i3lock \
+		xautolock \
+		scrot \
+		imagemagick \
+		feh \
+		thunar \
+		gvfs \
+		compton \
+		rofi \
+		unzip \
+		exuberant-ctags \
+		silversearcher-ag \
+		google-chrome-unstable \
+		psmisc
 
     echo "${yellow}Installing FZF${green}"
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf

@@ -10,5 +10,6 @@ if [ $(hostname) = 'annedouwe-pc' ]; then
 	MONITOR=HDMI-3 polybar -c $HOME/.polybar.conf bar &
 	killall i3bar 
 else
-	MONITOR=eDP-1-1 polybar -c $HOME/.polybar.conf bar &
+	# MONITOR=DP-2 polybar -c $HOME/.polybar.conf bar &
+	# killall i3bar 
 fi
