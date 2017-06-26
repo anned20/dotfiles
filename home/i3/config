@@ -132,9 +132,9 @@ bar {
 }
 
 # Media player controls
-bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+"
-bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-"
-bindsym XF86AudioMute exec "amixer -D pulse sset Master toggle"
+#bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+"
+#bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-"
+#bindsym XF86AudioMute exec "amixer -D pulse sset Master toggle"
 bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
@@ -153,8 +153,10 @@ exec --no-startup-id "$HOME/dotfiles/scripts/setbackground.sh"
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -b --config "$HOME/.compton.conf"
 exec --no-startup-id xautolock -time 5 -detectsleep -locker '$HOME/dotfiles/scripts/lock.sh'
-exec_always --no-startup-id "$HOME/dotfiles/scripts/polybar.sh"
 exec_always --no-startup-id "xrdb -merge ~/.Xresources"
+
+exec --no-startup-id xfce4-volumed
+exec --no-startup-id xfce4-power-manager
 
 client.focused #4F99D3 #4F99D3 #151718 #9FCA56
 client.focused_inactive #9FCA56 #9FCA56 #151718 #A074C4

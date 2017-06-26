@@ -1,15 +1,9 @@
 #!/usr/bin/env sh
 
-killall -q polybar
+killall -q xfce4-panel
 
-while pgrep -x polybar >/dev/null; do sleep 1; done
+while pgrep -x xfce4-panel >/dev/null; do sleep 1; done
 
-if [ $(hostname) = 'annedouwe-pc' ]; then
-	xrandr --output HDMI1 --auto --left-of HDMI3
-	MONITOR=HDMI-1 polybar -c $HOME/.polybar.conf bar &
-	MONITOR=HDMI-3 polybar -c $HOME/.polybar.conf bar &
-	killall i3bar 
-else
-	# MONITOR=DP-2 polybar -c $HOME/.polybar.conf bar &
-	# killall i3bar 
-fi
+xfce4-panel --disable-wm-check &
+
+killall i3bar 
