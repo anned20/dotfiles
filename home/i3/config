@@ -89,6 +89,7 @@ bindsym $mod+r mode "resize"
 mouse_warping none
 for_window [window_role="browser"] border none
 for_window [class="Termite"] border none
+for_window [class="YADWIN"] floating enable
 bindsym $mod+u [urgent=latest] focus
 
 gaps inner 10
@@ -127,7 +128,7 @@ mode $gaps {
 bindsym $mod+c mode $gaps
 
 bar {
-    status_command    i3status
+    status_command    $HOME/dotfiles/scripts/bar.sh
     position          top
 }
 
@@ -153,7 +154,7 @@ exec --no-startup-id "$HOME/dotfiles/scripts/setbackground.sh"
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -b --config "$HOME/.compton.conf"
 exec --no-startup-id xautolock -time 5 -detectsleep -locker '$HOME/dotfiles/scripts/lock.sh'
-exec_always --no-startup-id "$HOME/dotfiles/scripts/polybar.sh"
+exec --no-startup-id "synclient VertScrollDelta=-77"
 exec_always --no-startup-id "xrdb -merge ~/.Xresources"
 
 client.focused #4F99D3 #4F99D3 #151718 #9FCA56

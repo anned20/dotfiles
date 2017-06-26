@@ -27,9 +27,6 @@ addppas() {
     sudo add-apt-repository -y ppa:tjormola/i3-unstable
 	sudo add-apt-repository -y ppa:jonathonf/vim
 
-	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
-	sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-
     sudo apt-get update
 }
 
@@ -52,7 +49,7 @@ installtermite() {
     if ! command_exists termite; then
         echo "${yellow}Installing termite${green}"
 
-        sudo apt-get install -y libgtk2.0-dev
+        sudo apt-get install -y libgtk2.0-dev libgtk2.0-cil-dev libgtk3.0-cil-dev libgtk-3-dev
         wget -P /tmp/ -O - https://raw.githubusercontent.com/Corwind/termite-install/master/termite-install.sh | bash
     else
         echo "${yellow}Termite is already installed${green}"
@@ -174,7 +171,6 @@ misc() {
 		unzip \
 		exuberant-ctags \
 		silversearcher-ag \
-		google-chrome-unstable \
 		psmisc
 
     echo "${yellow}Installing FZF${green}"
