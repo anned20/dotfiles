@@ -2,10 +2,8 @@
 
 # Colour names
 WHITE=ffffff
-LIME=00ff00
 GRAY=666666
-YELLOW=ffff00
-MAROON=cc3300
+RED=ff0000
 
 IFS=$'\n'
 
@@ -19,34 +17,67 @@ info () {
 		VOLUME=$(amixer -D pulse get Master | egrep -o "[0-9]+%" -m 1)
 		MUTED=$(amixer -D pulse get Master | egrep -o "off" -m 1)
 		SENSORS="$(sensors -Au)"
+		SONG=$(playerctl metadata artist 2> /dev/null; printf " - "; playerctl metadata title 2> /dev/null)
 		LOAD=$(cat /proc/loadavg | awk '{print $1 ", " $2}')
 		CPU=$(sensor coretemp-isa-0000 temp1_input) # amdk10
 		RAM=$(awk '/MemTotal:/{total=$2}/MemAvailable:/{free=$2;print int(100-100/(total/free))}' /proc/meminfo)
 		DATE=$(date '+%F %T')
 
 		output=''
-		text ${WINDOW[1]}\  'window' $GRAY
+
+		# Window name
 		text ${WINDOW[0]} 'window'
-		text ' | ' 'sep' $YELLOW
+		text ' | ' 'sep' $GRAY
+
+		# Music
+		text ' SONG ' 'song' $GRAY
+		if [[ $SONG != '' ]]; then
+			text "${SONG:0:40}" 'song'
+		else
+			text 'Not playing' 'song' $GRAY
+		fi
+		text ' | ' 'sep' $GRAY
+
+		# Volume
 		text ' VOL ' 'volume' $GRAY
 		if [[ $MUTED == 'off' ]]; then
-			text 'muted' 'volume' 
+			text 'muted' 'volume' $GRAY
 		else
-			text $VOLUME 'volume' 
+			text $VOLUME 'volume'
 		fi
-		text ' | ' 'sep' $YELLOW
+		text ' | ' 'sep' $GRAY
+
+		# CPU and Load
 		text ' CPU ' 'cpu' $GRAY
-		text "$CPU°c" 'cpu'
-		text ' | ' 'sep' $YELLOW
+		if [[ $CPU -ge 70 ]]; then
+			text "$CPU°c" 'cpu' $RED
+		else
+			text "$CPU°c" 'cpu'
+		fi
+		text ' | ' 'sep' $GRAY
 		text ' LOAD ' 'load' $GRAY
-		text "$LOAD" 'load'
-		text ' | ' 'sep' $YELLOW
+		if [[ $(echo $LOAD | awk '{print $2}' | cut -d. -f1) -ge 4 ]]; then
+			text "$LOAD" 'load' $RED
+		else
+			text "$LOAD" 'load'
+		fi
+		text ' | ' 'sep' $GRAY
+
+		# RAM
 		text ' RAM ' 'ram' $GRAY
-		text "$RAM%" 'ram'
-		text ' | ' 'sep' $YELLOW
+		if [[ $RAM -ge 80 ]]; then
+			text "$RAM%" 'ram' $RED
+		else
+			text "$RAM%" 'ram'
+		fi
+		text ' | ' 'sep' $GRAY
+
+		# Date and time
 		text ' TIME ' 'time' $GRAY
 		text "$DATE" 'time'
-		text ' | ' 'sep' $YELLOW
+		text ' | ' 'sep' $GRAY
+
+		# Output
 		echo -e "[${output%??}],"
 		sleep 0.5
 	done
@@ -82,8 +113,19 @@ while read input; do
 				fi
 				;;
 			'"time"' )
-				# echo $x >> ~/debug.out
 				yad --no-buttons --class="YADWIN" --geometry=+$x+40 --calendar > /dev/null 2>&1
+				;;
+			'"song"')
+				if [[ $button == 1 ]]; then
+					playerctl play-pause
+				elif [[ $button == 4 ]]; then
+					playerctl next
+				elif [[ $button == 5 ]]; then
+					playerctl previous
+				fi
+				;;
+			'"cpu"' | '"load"' | '"ram"')
+				termite -e htop > /dev/null 2>&1
 				;;
 		esac
 	fi
