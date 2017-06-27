@@ -128,6 +128,7 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 set termguicolors
 set background=dark
 colorscheme molokai
+let g:airline_powerline_fonts = 1
 
 " Random leader things
 nmap <leader><tab> :b#<CR>

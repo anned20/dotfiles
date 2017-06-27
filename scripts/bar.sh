@@ -26,7 +26,11 @@ info () {
 		output=''
 
 		# Window name
-		text ${WINDOW[0]} 'window'
+		if [[ $WINDOW == '' ]]; then
+			text "Desktop" 'window'
+		else
+			text "$WINDOW" 'window'
+		fi
 		text ' | ' 'sep' $GRAY
 
 		# Music
@@ -94,9 +98,9 @@ while read input; do
 			val=${input}
 		fi
 
-		name=$(echo ${val} | jq '.name')
-		button=$(echo ${val} | jq '.button')
-		x=$(($(echo ${val} | jq '.x') - 50))
+		name=$(echo ${val} | cut -d, -f 1 | cut -d: -f2)
+		button=$(echo ${val} | cut -d, -f 2 | cut -d: -f2)
+		x=$(($(echo ${val} | cut -d, -f 3 | cut -d: -f2) - 50))
 
 		case $name in
 			'"volume"' )
@@ -105,10 +109,6 @@ while read input; do
 				elif [[ $button == 5 ]]; then
 					amixer -D pulse sset Master 5%- > /dev/null 2>&1
 				elif [[ $button == 1 ]]; then
-					VOLUME=$(amixer -D pulse get Master | egrep -o "[0-9]+%" -m 1)
-					VOL=`yad --scale --value=$VOLUME --min-value=0 --max-value=100 --step=1 --print-partial --class="YADWIN" --geometry=50x200 --vertical --button gtk-ok:0`
-					amixer -D pulse sset Master $VOL% > /dev/null 2>&1
-				elif [[ $button == 2 ]]; then
 					amixer -D pulse sset Master toggle > /dev/null 2>&1
 				fi
 				;;
@@ -124,7 +124,7 @@ while read input; do
 					playerctl previous
 				fi
 				;;
-			'"cpu"' | '"load"' | '"ram"')
+			'"load"')
 				termite -e htop > /dev/null 2>&1
 				;;
 		esac
