@@ -18,4 +18,8 @@ alias gmergetool="git mergetool"
 alias cusc="composer update sibben/core-bundle"
 alias ci="composer install"
 
+# Deprecation before it's deprecated
+alias python="python3"
+alias pip="pip3"
+
 w() { cd /var/www/$@; }

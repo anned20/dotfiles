@@ -19,6 +19,7 @@ info () {
 		VOLUME=$(amixer -D pulse get Master | egrep -o "[0-9]+%" -m 1)
 		MUTED=$(amixer -D pulse get Master | egrep -o "off" -m 1)
 		SENSORS="$(sensors -Au)"
+		LOAD=$(cat /proc/loadavg | awk '{print $1 ", " $2}')
 		CPU=$(sensor coretemp-isa-0000 temp1_input) # amdk10
 		RAM=$(awk '/MemTotal:/{total=$2}/MemAvailable:/{free=$2;print int(100-100/(total/free))}' /proc/meminfo)
 		DATE=$(date '+%F %T')
@@ -37,6 +38,9 @@ info () {
 		text ' CPU ' 'cpu' $GRAY
 		text "$CPU°c" 'cpu'
 		text ' | ' 'sep' $YELLOW
+		text ' LOAD ' 'load' $GRAY
+		text "$LOAD" 'load'
+		text ' | ' 'sep' $YELLOW
 		text ' RAM ' 'ram' $GRAY
 		text "$RAM%" 'ram'
 		text ' | ' 'sep' $YELLOW
@@ -44,7 +48,7 @@ info () {
 		text "$DATE" 'time'
 		text ' | ' 'sep' $YELLOW
 		echo -e "[${output%??}],"
-		sleep 0.1
+		sleep 0.5
 	done
 }
 
