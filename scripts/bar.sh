@@ -9,7 +9,6 @@ GREEN=00ff00
 IFS=$'\n'
 
 function text { output+=$(echo -n '{"full_text": "'${1//\"/\\\"}'", "color": "#'${3-$WHITE}'", "name": "'${2}'", "separator": false, "separator_block_width": 1}, ') ;}
-function windowtext { output+=$(echo -n '{"full_text": "'${1//\"/\\\"}'", "min_width": 800, "align": "center", "color": "#'${3-$WHITE}'", "name": "'${2}'", "separator": false, "separator_block_width": 1}, ') ;}
 function sensor { echo "$SENSORS" | awk '/^'${1}'/' RS='\n\n' | awk -F '[:. ]' '/'${2}':/{print$5}' ;}
 
 info () {
@@ -30,9 +29,9 @@ info () {
 
 		# Window name
 		if [[ $WINDOW == '' ]]; then
-			windowtext "Desktop" 'window'
+			text "Desktop" 'window'
 		else
-			windowtext "$WINDOW" 'window'
+			text "$WINDOW" 'window'
 		fi
 		text ' | ' 'sep' $GRAY
 
