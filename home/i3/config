@@ -145,6 +145,7 @@ bindsym Control+mod1+l exec "$HOME/dotfiles/scripts/lock.sh"
 bindsym $mod+z exec "$HOME/dotfiles/scripts/power.sh"
 bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+x exec "i3-msg 'append_layout ~/.i3/development.json' && termite | termite | termite"
+bindsym $mod+b exec "~/dotfiles/scripts/setbackground.sh"
 
 exec "setxkbmap -layout us -variant altgr-intl -option nodeadkeys"
 exec "xset r rate 300 30"

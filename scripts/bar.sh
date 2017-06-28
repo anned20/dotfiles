@@ -4,10 +4,12 @@
 WHITE=ffffff
 GRAY=666666
 RED=ff0000
+GREEN=00ff00
 
 IFS=$'\n'
 
 function text { output+=$(echo -n '{"full_text": "'${1//\"/\\\"}'", "color": "#'${3-$WHITE}'", "name": "'${2}'", "separator": false, "separator_block_width": 1}, ') ;}
+function windowtext { output+=$(echo -n '{"full_text": "'${1//\"/\\\"}'", "min_width": 800, "align": "center", "color": "#'${3-$WHITE}'", "name": "'${2}'", "separator": false, "separator_block_width": 1}, ') ;}
 function sensor { echo "$SENSORS" | awk '/^'${1}'/' RS='\n\n' | awk -F '[:. ]' '/'${2}':/{print$5}' ;}
 
 info () {
@@ -18,6 +20,7 @@ info () {
 		MUTED=$(amixer -D pulse get Master | egrep -o "off" -m 1)
 		SENSORS="$(sensors -Au)"
 		SONG=$(playerctl metadata artist 2> /dev/null; printf " - "; playerctl metadata title 2> /dev/null)
+		SONGSTATUS=$(playerctl status)
 		LOAD=$(cat /proc/loadavg | awk '{print $1 ", " $2}')
 		CPU=$(sensor coretemp-isa-0000 temp1_input) # amdk10
 		RAM=$(awk '/MemTotal:/{total=$2}/MemAvailable:/{free=$2;print int(100-100/(total/free))}' /proc/meminfo)
@@ -27,16 +30,18 @@ info () {
 
 		# Window name
 		if [[ $WINDOW == '' ]]; then
-			text "Desktop" 'window'
+			windowtext "Desktop" 'window'
 		else
-			text "$WINDOW" 'window'
+			windowtext "$WINDOW" 'window'
 		fi
 		text ' | ' 'sep' $GRAY
 
 		# Music
 		text ' SONG ' 'song' $GRAY
-		if [[ $SONG != '' ]]; then
-			text "${SONG:0:40}" 'song'
+		if [[ $SONG != '' && $SONGSTATUS == 'Playing' ]]; then
+			text "${SONG:0:40}" 'song' $GREEN
+		elif [[ $SONG != '' && $SONGSTATUS == 'Paused' ]]; then
+			text "${SONG:0:40}" 'song' $GRAY
 		else
 			text 'Not playing' 'song' $GRAY
 		fi
@@ -90,17 +95,17 @@ info () {
 info &
 
 while read input; do 
-	# Do not put this in jq
+	# Do not register this
 	if [[ $input != '[' ]]; then
-		if [[ ${input:0:1} == ',' ]]; then
-			val=${input:1}
-		else
-			val=${input}
+		val=${input}
+
+		if [[ ${val:0:1} == ',' ]]; then
+			val=${val:1}
 		fi
 
-		name=$(echo ${val} | cut -d, -f 1 | cut -d: -f2)
-		button=$(echo ${val} | cut -d, -f 2 | cut -d: -f2)
-		x=$(($(echo ${val} | cut -d, -f 3 | cut -d: -f2) - 50))
+		name=$(echo ${val}   | cut -d, -f1 | cut -d: -f2)
+		button=$(echo ${val} | cut -d, -f2 | cut -d: -f2)
+		x=$(($(echo ${val}   | cut -d, -f3 | cut -d: -f2) - 50))
 
 		case $name in
 			'"volume"' )
@@ -110,6 +115,8 @@ while read input; do
 					amixer -D pulse sset Master 5%- > /dev/null 2>&1
 				elif [[ $button == 1 ]]; then
 					amixer -D pulse sset Master toggle > /dev/null 2>&1
+				elif [[ $button == 3 ]]; then
+					pavucontrol
 				fi
 				;;
 			'"time"' )
