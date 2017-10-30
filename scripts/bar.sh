@@ -24,6 +24,7 @@ info () {
 		CPU=$(sensor coretemp-isa-0000 temp1_input) # amdk10
 		RAM=$(awk '/MemTotal:/{total=$2}/MemAvailable:/{free=$2;print int(100-100/(total/free))}' /proc/meminfo)
 		DATE=$(date '+%F %T')
+		BATTERYPERCENTAGE=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | awk '/percentage: / {print $2}')
 
 		output=''
 
@@ -54,6 +55,13 @@ info () {
 			text $VOLUME 'volume'
 		fi
 		text ' | ' 'sep' $GRAY
+
+		# Battery
+		if [[ $BATTERYPERCENTAGE ]]; then
+			text ' BAT ' 'battery' $GRAY
+			text "$BATTERYPERCENTAGE" 'battery'
+			text ' | ' 'sep' $GRAY
+		fi
 
 		# CPU and Load
 		text ' CPU ' 'cpu' $GRAY
