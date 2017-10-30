@@ -64,6 +64,9 @@ source $ZSH/oh-my-zsh.sh
 # Some of my stuff
 [[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
 
+autoload bashcompinit && bashcompinit
+source /etc/bash_completion.d/w
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 

@@ -8,7 +8,7 @@ bindsym $mod+Return exec termite
 
 bindsym $mod+q kill
 
-bindsym $mod+d exec "rofi -combi-modi window,drun -show combi -modi combi"
+bindsym $mod+d exec "rofi -show"
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -92,6 +92,9 @@ for_window [class="Termite"] border none
 for_window [class="YADWIN"] floating enable
 bindsym $mod+u [urgent=latest] focus
 
+for_window [instance="_scratch_"] move to scratchpad
+exec termite --name="_scratch_"
+
 gaps inner 10
 gaps outer 5
 
@@ -127,11 +130,6 @@ mode $gaps {
 }
 bindsym $mod+c mode $gaps
 
-bar {
-    status_command    $HOME/dotfiles/scripts/bar.sh
-    position          top
-}
-
 # Media player controls
 #bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+"
 #bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-"
@@ -146,6 +144,7 @@ bindsym $mod+z exec "$HOME/dotfiles/scripts/power.sh"
 bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+x exec "i3-msg 'append_layout ~/.i3/development.json' && termite | termite | termite"
 bindsym $mod+b exec "~/dotfiles/scripts/setbackground.sh"
+bindsym $mod+m scratchpad show
 
 exec "setxkbmap -layout us -variant altgr-intl -option nodeadkeys"
 exec "xset r rate 300 30"
@@ -157,6 +156,7 @@ exec --no-startup-id compton -b --config "$HOME/.compton.conf"
 exec --no-startup-id xautolock -time 5 -detectsleep -locker '$HOME/dotfiles/scripts/lock.sh'
 exec --no-startup-id "synclient VertScrollDelta=-77"
 exec_always --no-startup-id "xrdb -merge ~/.Xresources"
+exec_always --no-startup-id "$HOME/dotfiles/scripts/polybar.sh"
 
 exec --no-startup-id xfce4-volumed
 exec --no-startup-id xfce4-power-manager

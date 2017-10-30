@@ -1,29 +1,12 @@
 source ~/.bash_aliases
 
-export ANDROID_HOME=~/Android/Sdk
-export PATH=$PATH:~/Android/Sdk/tools
-export PATH=$PATH:~/IntelliJ_IDEA/idea/bin
-export PATH=$PATH:~/.tmuxifier/bin
 export PATH=$PATH:~/.config/composer/vendor/bin/
+export PATH=$PATH:~/.local/bin/
 export PATH=$PATH:~/bin/
 export PATH=$PATH:~/.composer/vendor/bin/
-export TMUXIFIER_LAYOUT_PATH="$HOME/.tmuxlayouts"
 export EDITOR="vim"
-export THEOS=/opt/theos
-export TERMINAL=mate-terminal
 export TERM=xterm-256color
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-# BASE16_SHELL=$HOME/.config/base16-shell/
-# [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
-# DNVM
-[ -s "/home/annedouwe/.dnx/dnvm/dnvm.sh" ] && . "/home/annedouwe/.dnx/dnvm/dnvm.sh" # Load dnvm
-
-export PATH="$HOME/.cargo/bin:$PATH"
-
 # FZF
-export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='ag --skip-vcs-ignore --hidden --ignore .git -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

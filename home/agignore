@@ -1,0 +1,11 @@
+/.git/
+app/cache
+app/logs
+var/cache
+var/logs
+var/sessions
+web/bundles
+web/zzcomponents
+web/css
+web/js
+node_modules

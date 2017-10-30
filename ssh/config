@@ -10,5 +10,19 @@ Host yoccar
 	HostName www.yoccar.com
 	User yoccar
 
+Host store03
+	HostName store03.refreshserver.nl
+	Port 5348
+	user root
+
+Host store04
+	HostName store04.refreshserver.nl
+	Port 5348
+	user root
+
+Host sdas
+	HostName jenkins.sibben.nl
+	user root
+
 Host *
 	ServerAliveInterval 120
