@@ -2,12 +2,6 @@
     "border": "none",
     "current_border_width": 0,
     "floating": "auto_off",
-    "geometry": {
-       "height": 338,
-       "width": 562,
-       "x": 0,
-       "y": 0
-    },
     "name": "Terminal",
     "percent": 0.6,
     "swallows": [
@@ -30,14 +24,7 @@
             "border": "none",
             "current_border_width": 0,
             "floating": "auto_off",
-            "geometry": {
-               "height": 338,
-               "width": 562,
-               "x": 0,
-               "y": 0
-            },
             "name": "Terminal",
-            "percent": 0.8,
             "swallows": [
                {
 				   "class": "^Termite$",
@@ -50,14 +37,20 @@
             "border": "none",
             "current_border_width": 0,
             "floating": "auto_off",
-            "geometry": {
-               "height": 338,
-               "width": 562,
-               "x": 0,
-               "y": 0
-            },
             "name": "Terminal",
-            "percent": 0.2,
+            "swallows": [
+               {
+				   "class": "^Termite$",
+				   "instance": "^termite$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "none",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "name": "Terminal",
             "swallows": [
                {
 				   "class": "^Termite$",

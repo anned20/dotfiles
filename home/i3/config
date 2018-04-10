@@ -87,8 +87,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 mouse_warping none
-for_window [window_role="browser"] border none
-for_window [class="Termite"] border none
+for_window [class="^.*"] border none
 for_window [class="YADWIN"] floating enable
 bindsym $mod+u [urgent=latest] focus
 

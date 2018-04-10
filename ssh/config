@@ -26,3 +26,15 @@ Host sdas
 
 Host *
 	ServerAliveInterval 120
+
+Host webhooks
+    Hostname s1.sibben.nl
+    User webhooks_sibben_nl
+
+Host autopartswinkel
+    Hostname autopartswinkel.stor-e.net
+    User autopartswinkel_store_net
+
+Host adirectbtb
+    Hostname adirectbtb.stor-e.net
+    User adirectbtb_store_net

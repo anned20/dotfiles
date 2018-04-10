@@ -8,17 +8,14 @@ runtime! macros/matchit.vim
 call plug#begin('~/.vim/plugged')
 
 " Rice
-Plug 'mhinz/vim-startify'
-Plug 'junegunn/goyo.vim'
+Plug 'simnalamburt/vim-mundo'
 
 " Syntax
 Plug 'tomasr/molokai'
-Plug 'alvan/vim-php-manual'
 Plug 'othree/html5.vim'
 Plug 'groenewege/vim-less'
 Plug 'evidens/vim-twig'
 Plug 'pangloss/vim-javascript'
-Plug 'lervag/vimtex'
 Plug 'mxw/vim-jsx'
 
 " tpope
@@ -26,8 +23,9 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-repeat'
 
-Plug 'easymotion/vim-easymotion'
+Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'osyo-manga/vim-over'
@@ -84,7 +82,7 @@ set foldmethod=marker
 " Cursor motion
 set scrolloff=5
 set backspace=indent,eol,start
-set matchpairs+=<:> " use % to jump between pairs
+set matchpairs+=<:>
 
 " Rendering
 set ttyfast
@@ -113,7 +111,7 @@ nnoremap k gk
 
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬
-map <leader>l :set list!<CR> " Toggle tabs and EOL
+map <leader>l :set list!<CR>
 
 set termguicolors
 set background=dark
@@ -137,15 +135,18 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+nnoremap <C-C> <C-W><C-C>
+set splitright
+set splitbelow
 
 " Random leader things
 nmap <leader><tab> :b#<CR>
 nmap <leader>ff :Files<CR>
 nmap <leader>ft :NERDTreeToggle<CR>
 nmap <leader>bb :Buffers<CR>
-nmap <leader>tt :TagbarOpenAutoClose<CR>
 nmap <leader>ve :tabedit ~/.vimrc<CR>
 nmap <leader>vr :so $MYVIMRC<CR>
+nmap <leader>tt :TagbarToggle<CR>
 
 augroup ft_php
 	autocmd!
@@ -168,7 +169,6 @@ let g:vdebug_options= {
 			\    "port" : 1911,
 			\}
 
-set laststatus=2
 set t_Co=256
 set hidden
 

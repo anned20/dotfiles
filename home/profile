@@ -1,5 +1,6 @@
 source ~/.bash_aliases
 
+export PATH=$PATH:/usr/lib/go-1.9/bin
 export PATH=$PATH:~/.config/composer/vendor/bin/
 export PATH=$PATH:~/.local/bin/
 export PATH=$PATH:~/bin/

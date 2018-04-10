@@ -11,6 +11,10 @@ alias api="cd /var/www/sibbenapi"
 alias oz="cd /var/www/onderdelenzoeker"
 alias meld="GTK_THEME=Arc-Darker meld"
 
+richest () {
+    ./adcoind listaccounts | awk '{print $0 | "sort -k3h"}' | sed -e 's/    \|"//g' | grep -v { | grep -v \} | grep -v "0.00000000" | grep -e "ACC_WALLET.*\:"
+}
+
 alias gmerge="git merge --no-ff"
 alias gmergetool="git mergetool"
 alias cusc="composer update sibben/core-bundle"
