@@ -1,0 +1,6 @@
+#name: console log 
+#key: cl
+#contributor: Anne Douwe Bouma <annedouwebouma@gmail.com>
+#name: console.log(...);
+# --
+console_log($1);

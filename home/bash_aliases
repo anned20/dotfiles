@@ -3,14 +3,21 @@ alias ll="ls -l"
 alias la="ls -la"
 alias oudo="cd /var/www/oudo"
 alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
-alias gd="git diff"
-alias gb="git rev-parse --abbrev-ref HEAD"
-alias wgb="echo \$(git rev-parse --abbrev-ref HEAD) > current_branchename; gb"
-alias tags="ctags-exuberant -R --PHP-kinds=cidf --fields=fksta src vendor/sibben"
+alias tags="ctags --languages=PHP -f .git/tags src/ && ctags --languages=PHP -f vendor/tags vendor/"
 alias wttr="curl wttr.in/Twijzelerheide"
 alias 538="google-chrome --app=http://www.538.nl/live/tv/index.php"
 alias mox="cd /var/www/mobilox-members"
 alias api="cd /var/www/sibbenapi"
 alias oz="cd /var/www/onderdelenzoeker"
+alias meld="GTK_THEME=Arc-Darker meld"
 
-w() { cd /var/www/$@; }
+alias gmerge="git merge --no-ff"
+alias gmergetool="git mergetool"
+alias cusc="composer update sibben/core-bundle"
+alias ci="composer install"
+
+# Deprecation before it's deprecated
+alias python="python3"
+alias pip="pip3"
+
+alias w=". ~/bin/w"

@@ -10,5 +10,31 @@ Host yoccar
 	HostName www.yoccar.com
 	User yoccar
 
+Host store03
+	HostName store03.refreshserver.nl
+	Port 5348
+	user root
+
+Host store04
+	HostName store04.refreshserver.nl
+	Port 5348
+	user root
+
+Host sdas
+	HostName jenkins.sibben.nl
+	user root
+
 Host *
 	ServerAliveInterval 120
+
+Host webhooks
+    Hostname s1.sibben.nl
+    User webhooks_sibben_nl
+
+Host autopartswinkel
+    Hostname autopartswinkel.stor-e.net
+    User autopartswinkel_store_net
+
+Host adirectbtb
+    Hostname adirectbtb.stor-e.net
+    User adirectbtb_store_net

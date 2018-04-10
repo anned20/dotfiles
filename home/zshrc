@@ -49,7 +49,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting zsh-wakatime extract)
 
 # User configuration
 
@@ -63,6 +63,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Some of my stuff
 [[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
+
+autoload bashcompinit && bashcompinit
+source /etc/bash_completion.d/w
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -79,8 +82,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export NVM_DIR="/home/sibben/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s ~/.nvm/nvm.sh ] && \. ~/.nvm/nvm.sh  # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -89,3 +91,4 @@ then
 	"$@"
 	set --
 fi
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

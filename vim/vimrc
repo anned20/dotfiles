@@ -1,108 +1,88 @@
-" don't try to be vi compatible
 set nocompatible
 
-" Helps force plugins to load correctly when it is turned back on below
 filetype off
 
-" Load plugins here (pathogen or vundle)
-set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=~/.fzf
 runtime! ftplugin/man.vim
+runtime! macros/matchit.vim
 
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'Raimondi/delimitMate'
-Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'chriskempson/base16-vim'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'ervandew/supertab'
-Plugin 'evidens/vim-twig'
-Plugin 'godlygeek/tabular'
-Plugin 'groenewege/vim-less'
-Plugin 'honza/vim-snippets'
-Plugin 'jaxbot/browserlink.vim'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'joonty/vdebug'
-Plugin 'junegunn/fzf.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'mattn/emmet-vim'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'othree/html5.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/nerdtree'
-Plugin 'terryma/vim-expand-region'
-Plugin 'tobyS/vmustache'
-Plugin 'tomasr/molokai'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+" Rice
+Plug 'simnalamburt/vim-mundo'
 
-call vundle#end()            " required
+" Syntax
+Plug 'tomasr/molokai'
+Plug 'othree/html5.vim'
+Plug 'groenewege/vim-less'
+Plug 'evidens/vim-twig'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
-" Turn on syntax highlighting
+" tpope
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-repeat'
+
+Plug 'majutsushi/tagbar'
+Plug 'w0rp/ale'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'osyo-manga/vim-over'
+Plug 'vimwiki/vimwiki'
+Plug 'Raimondi/delimitMate'
+Plug 'SirVer/ultisnips'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'airblade/vim-gitgutter'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'ervandew/supertab'
+Plug 'godlygeek/tabular'
+Plug 'honza/vim-snippets'
+Plug 'joonty/vdebug'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'mattn/emmet-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+call plug#end()
+
 syntax on
 
-" For plugins to load correctly
 filetype plugin indent on
 filetype plugin on
 
-" Pick a leader key
 let mapleader = "\<space>"
 
-" Remap jj to the Esc key
-imap jj <Esc>
-
-" Security
-set modelines=0
+imap jk <Esc>
 
 " Show line numbers
 set number
 set relativenumber
 
-" Show file stats
-set ruler
-
-" Persistent undo
-try
-	set undodir=~/.vim_undodir
-	set undofile
-catch
-endtry
-
-" 
-set guioptions-=m
-set guioptions-=T
-set guioptions-=r
-set guioptions-=L
+set smartindent
+set autoindent
 
 " Encoding
 set encoding=utf-8
 
 " Whitespace
-set nowrap
+set wrap
 set textwidth=79
 set formatoptions=cqrn1
 set formatoptions-=t
 set shiftwidth=4
 set tabstop=4
+set expandtab
+
+" Folding
+set foldmethod=marker
 
 " Cursor motion
 set scrolloff=5
 set backspace=indent,eol,start
-set matchpairs+=<:> " use % to jump between pairs
-runtime! macros/matchit.vim
-
-" Move up/down editor lines
-nnoremap j gj
-nnoremap k gk
-
-" Allow hidden buffers
-set hidden
+set matchpairs+=<:>
 
 " Rendering
 set ttyfast
@@ -118,8 +98,6 @@ set showmode
 set showcmd
 
 " Searching
-nnoremap / /\v
-vnoremap / /\v
 set hlsearch
 set incsearch
 set ignorecase
@@ -127,97 +105,86 @@ set smartcase
 set showmatch
 map <leader>c :let @/=''<cr> " clear search
 
-" Remap help key.
-inoremap <F1> <ESC>:set invfullscreen<CR>a
-nnoremap <F1> :set invfullscreen<CR>
-vnoremap <F1> :set invfullscreen<CR>
-
-" Tab shortcuts
-nnoremap <leader>p :tabprevious<CR>
-nnoremap <leader>n :tabnext<CR>
-nnoremap <leader>c :tabclose<CR>
+" Go over wraps like it's nothing
+nnoremap j gj
+nnoremap k gk
 
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬
-" Uncomment this to enable by default:
-" set list " To enable by default
-" Or use your leader key + l to toggle on/off
-map <leader>l :set list!<CR> " Toggle tabs and EOL
+map <leader>l :set list!<CR>
 
 set termguicolors
 set background=dark
 colorscheme molokai
+set signcolumn=yes
+let g:airline_theme='molokai'
+let g:airline_powerline_fonts = 1
 
-" Quickly save using leader+w
-nmap <leader>w :w<CR>
+" Let's save undo info!
+if !isdirectory($HOME."/.vim")
+	call mkdir($HOME."/.vim", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/undo-dir")
+	call mkdir($HOME."/.vim/undo-dir", "", 0700)
+endif
+set undodir=~/.vim/undo-dir
+set undofile
 
-" Quickly save and quit using leader+wq
-nmap <leader>wq :wq<CR>
-
-" Quit without saving using leader+qq
-nmap <leader>qq :q!<CR>
+" Splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-C> <C-W><C-C>
+set splitright
+set splitbelow
 
 " Random leader things
-nmap <leader>f :NERDTreeMirrorToggle<CR>
-nmap <leader>b :TagbarOpenAutoClose<CR>
-nmap <leader>j :%!python -m json.tool<CR>
-nmap <leader>v :tabedit ~/.vimrc<CR>
-nmap <leader>r :so $MYVIMRC<CR>
-nmap <leader><space> :let @/=""<CR>
-nmap <silent><Leader><C-]> <C-w><C-]><C-w>T
+nmap <leader><tab> :b#<CR>
+nmap <leader>ff :Files<CR>
+nmap <leader>ft :NERDTreeToggle<CR>
+nmap <leader>bb :Buffers<CR>
+nmap <leader>ve :tabedit ~/.vimrc<CR>
+nmap <leader>vr :so $MYVIMRC<CR>
+nmap <leader>tt :TagbarToggle<CR>
+
+augroup ft_php
+	autocmd!
+	autocmd FileType php nnoremap <buffer> <leader>us :Start! ctags --languages=PHP -f .git/tags src/<cr>
+	autocmd FileType php nnoremap <buffer> <leader>uv :Start! ctags --languages=PHP -f vendor/tags vendor/<cr>
+augroup END
+
+let g:vimwiki_list = [
+			\{'path': '~/Dropbox/VimWiki/personal.wiki'},
+			\{'path': '~/Dropbox/VimWiki/work.wiki'}
+			\]
 
 " Random things
 let NERDTreeQuitOnOpen=1
 let g:nerdtree_tabs_open_on_gui_startup=2
-let g:gitgutter_sign_column_always = 1
-set formatoptions-=t
 set noswapfile
 set cursorline
-set nobackup
-set tags=tags;/
-au InsertEnter * set nonumber
-au InsertLeave * set number
-let g:vimwiki_list = [{'path': '~/dotfiles/vimwiki'}]
+set tags=tags,.git/tags,vendor/tags
 let g:vdebug_options= {
-			\    "port" : 9999,
+			\    "port" : 1911,
 			\}
-map gwl :call Focus('right', 'l')<CR>
-map gwh :call Focus('left', 'h')<CR>
-map gwk :call Focus('up', 'k')<CR>
-map gwj :call Focus('down', 'j')<CR>
 
-" iOS tweak syntax highlighting
-au BufRead,BufNewFile *.xm set filetype=objc
-au BufRead,BufNewFile *.mm set filetype=objc
-
-" Airline
-let g:airline_powerline_fonts = 1
-
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-set laststatus=2
 set t_Co=256
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+set hidden
 
 " YouCompleteMe and UltiSnips compatibility
 let g:SuperTabDefaultCompletionType    = '<C-n>'
 let g:SuperTabCrMapping                = 0
-
+ 
 " YouCompleteMe
 let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
-
+ 
 let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/.vim/Snippets']
-
+ 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" fzf
-nmap <leader>a :Files<CR>
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendors/*,*/tmp/*,*/web/js/*,*/web/css/*
+ 
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendors/*,*/tmp/*

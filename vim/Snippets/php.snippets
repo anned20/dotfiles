@@ -1,20 +1,118 @@
-snippet f3s "Fat Free set function"
-$f3->set('${1:name}', '${2:value}');
+global !p
+def get_args(args):
+	return args.split(', ')
+
+def get_argument_type(arg):
+	parts = arg.split(' ')
+
+	if parts[0].startswith('$'):
+		if len(parts) < 3:
+			return 'mixed'
+
+		if parts[2] in ['[]', 'array()']:
+			return 'array'
+
+		if parts[2] in ['true', 'false']:
+			return 'bool'
+
+		return 'mixed'
+
+	return arg.split(' ')[0]
+
+def get_argument_name(arg):
+	parts = arg.split(' ')
+
+	if parts[0].startswith('$'):
+		return parts[0][1:]
+
+	if len(parts) > 1:
+		return get_argument_name(parts[1])
+
+	return ''
+
+def get_max_type_length(args):
+	return max([len(type) for type in map(get_argument_type, args)])
+
+def get_max_argument_length(args):
+	return max([len(type) for type in map(get_argument_name, args)])
+
+def format_arg(arg, type_length):
+	argument_type = get_argument_type(arg)
+	argument_name = get_argument_name(arg)
+
+	if argument_name:
+		argument_name = '$%s' % argument_name
+
+	return ' * @param %s %s' % (argument_type.ljust(type_length), argument_name)
+
+def write_docblock_params(t, snip):
+	if len(t) == 0:
+		snip += ' * @todo'
+		snip += ' *'
+		snip += ' * @return todo'
+
+		return
+
+	args = get_args(t)
+	max_length = get_max_type_length(args)
+
+	for arg in args:
+		snip += format_arg(arg, max_length)
+
+	snip += ' *'
+	snip += ' * @return todo'
+
+def write_constructor_setters(t, snip):
+	if len(t) == 0:
+		return
+
+	snip >> 1
+
+	args = get_args(t)
+	max_length = get_max_argument_length(args)
+
+	for arg in args:
+		arg_name = get_argument_name(arg)
+
+		if arg_name:
+			snip += '$this->%s = $%s;' % (arg_name.ljust(max_length), arg_name)
+endglobal
+
+snippet construct "__construct()" b
+/**`!p write_docblock_params(t[1], snip)`
+ */
+public function __construct($1)
+{`!p write_constructor_setters(t[1], snip)`
+}$0
 endsnippet
 
-snippet f3g "Fat Free get function"
-$f3->get('${1:name}');
+snippet pubf "public function()" b
+/**`!p write_docblock_params(t[2], snip)`
+ */
+public function ${1:name}($2)
+{
+	${3:// code here}
+}$0
 endsnippet
 
-snippet f3r "Fat Free route definition"
-$f3->route('${1:GET|POST|PUT|DELETE|...} @${2:ROUTENAME}: ${3:ROUTE}',
-	function ($f3)
-	{
-		$0
-	}
-);
+snippet prof "protected function()" b
+/**`!p write_docblock_params(t[2], snip)`
+ */
+protected function ${1:name}($2)
+{
+	${3:// code here}
+}$0
 endsnippet
 
-snippet f3rr "Fat Free reroute"
-$f3->reroute('${1:ROUTENAME}');
+snippet prif "private function()" b
+/**`!p write_docblock_params(t[2], snip)`
+ */
+private function ${1:name}($2)
+{
+	${3:// code here}
+}$0
+endsnippet
+
+snippet dd "dump and die()" b
+dump(${1:$var}); die();$0
 endsnippet

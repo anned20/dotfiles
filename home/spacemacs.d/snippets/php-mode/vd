@@ -1,0 +1,6 @@
+#name: var_dump
+#key: vd
+#contributor: Anne Douwe Bouma <annedouwebouma@gmail.com>
+#name: var_dump(...);
+# --
+var_dump($1);
