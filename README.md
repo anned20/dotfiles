@@ -6,16 +6,14 @@ Just my dotfiles, nothing more, nothing less.
 
 So simple! You just clone this repository and run `./install.sh`
 
-Install `yarn` or `npm` and install Chromix-Too. Then install the Chrome plugin and ensure the `chromix-too-server` is running.
-
 # License
 
- * ----------------------------------------------------------------------------
- * "THE BEER-WARE LICENSE" (Revision 42):
- * Anne Douwe Bouma wrote this file. As long as you retain this notice you
- * can do whatever you want with this stuff. If we meet some day, and you think
- * this stuff is worth it, you can buy me a beer in return.
- * Or actually, I'm legally not allowed to drink beer yet.
- * anned20 | <annedouwebouma@gmail.com>
- * ----------------------------------------------------------------------------
- 
+```
+----------------------------------------------------------------------------
+"THE BEER-WARE LICENSE" (Revision 42):
+Anne Douwe Bouma wrote this file. As long as you retain this notice you
+can do whatever you want with this stuff. If we meet some day, and you think
+this stuff is worth it, you can buy me a beer in return.
+anned20 | <annedouwebouma@gmail.com>
+----------------------------------------------------------------------------
+```
